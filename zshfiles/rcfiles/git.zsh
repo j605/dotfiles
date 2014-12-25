@@ -1,6 +1,7 @@
 # Its' aliased to git automatically (when using boxen?)
 # but unalias it because I wanna set __EXECUTED_GIT_COMMAND
-unalias git
+# It is not aliased anyways (j605)
+#unalias git
 
 # Use hub
 function git() {
@@ -22,7 +23,8 @@ function preq() {
 }
 
 # ghi -- github issues from command line
-export GHI_TOKEN=`cat ~/private_files/ghi_token`
+# not using ghi
+#export GHI_TOKEN=`cat ~/private_files/ghi_token`
 
 # Sugers
 alias gs="git status --short --untracked-files"
