@@ -8,7 +8,7 @@ compinit
 # End of lines added by compinstall
 
 # Jump into tmux session automatically {{{
-export AUTO_TMUX_SESSION_NAME="genki"
+export AUTO_TMUX_SESSION_NAME="j605"
 if [ -z $TMUX ]; then
 	tmux attach-session -t "$AUTO_TMUX_SESSION_NAME"
 	if [ $? -ne 0 ]; then
@@ -65,7 +65,7 @@ source $DOTDIR/zshfiles/genki.zsh-theme
 # Make online help available
 unalias run-help
 autoload run-help
-HELPDIR=/usr/local/share/zsh/helpfiles
+HELPDIR=/usr/share/zsh/helpfiles
 
 # Load all config files
 rcfiles=(
