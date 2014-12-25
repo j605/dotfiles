@@ -8,7 +8,7 @@ export EDITOR=vim
 export GIT_EDITOR=vim
 
 # Locale
-export LANG=en_US.UTF-8
+export LANG=en_IN.UTF-8
 
 # GOLANG
 export GOPATH=$HOME/go
