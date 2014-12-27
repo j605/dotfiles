@@ -9,8 +9,8 @@
 	pr-setup = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*
 
 [user]
-	name = Genki Sugimoto
-	email = cfhoyuk.reccos.nelg@gmail.com
+	name = Jagannathan Tiruvallur Eachambadi
+	email = jagannathante@gmail.com
 
 [core]
 	editor = "vim -u ~/.vimrc.minimal"
@@ -30,19 +30,13 @@
 	trustExitCode = true
 
 [github]
-	user = Genki-S
+	user = j605
 
 [color "diff"]
 	new = cyan
 
 [include]
 	path = ~/.gitconfig.local
-
-[credential]
-	helper = /opt/boxen/bin/boxen-git-credential
-
-[hub]
-	protocol = https
 
 [init]
 	templatedir = ~/.git_template_dir
