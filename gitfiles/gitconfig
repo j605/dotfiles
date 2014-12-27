@@ -32,6 +32,9 @@
 [github]
 	user = j605
 
+[hub]
+	protocol = git
+
 [color "diff"]
 	new = cyan
 
