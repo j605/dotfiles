@@ -1,4 +1,4 @@
-let g:LatexBox_latexmk_options = '-pvc -pdfdvi'
+let g:LatexBox_latexmk_options = '-pdf'
 
 " Foldings
 let g:LatexBox_Folding = 1
