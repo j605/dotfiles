@@ -20,5 +20,5 @@ set lazyredraw
 set synmaxcol=128
 
 let g:tex_fold_enabled = 1
-let g:LatexBox_latexmk_options="-pdf"
+let g:LatexBox_latexmk_options="-pdf -shell-escape"
 let g:LatexBox_viewer="zathura"
