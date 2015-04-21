@@ -453,6 +453,13 @@
             - go
 ## }}}
 
+## Python {{{
+- davidhalter/jedi-vim:
+    lazy: 1
+    autoload:
+        filetypes:
+            - python
+
 ## Vim {{{
 - xolox/vim-reload:
     depends:

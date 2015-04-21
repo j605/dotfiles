@@ -33,6 +33,7 @@ set hidden
 " terminal {{{
 "}}}
 " using the mouse {{{
+set mouse=a
 "}}}
 " printing {{{
 "}}}
