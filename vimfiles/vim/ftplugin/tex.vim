@@ -14,8 +14,6 @@ set grepprg=grep\-nH\$*
 filetype indent on
 
 " http://superuser.com/questions/302186/vim-scrolls-very-slow-when-a-line-is-too-long
-set norelativenumber
-set nocursorline
 set lazyredraw
 set synmaxcol=128
 
