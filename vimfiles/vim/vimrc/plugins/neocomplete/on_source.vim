@@ -41,5 +41,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+if !exists('g:neocomplete#force_omni_input_patterns')
+      let g:neocomplete#force_omni_input_patterns = {}
+endif
+
 let g:neocomplete#force_omni_input_patterns.tex =
       \ '\v\\\a*(ref|cite)\a*([^]]*\])?\{(|[^}]*,)'
