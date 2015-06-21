@@ -15,7 +15,7 @@ if [ -z $TMUX ]; then
 	tmux attach-session -t "$AUTO_TMUX_SESSION_NAME"
 	if [ $? -ne 0 ]; then
 		# Init new tmux session (play around with some tmux scripting)
-		tmux new-session -s "$AUTO_TMUX_SESSION_NAME" -n "org" "$SHELL -i -c 'org'"
+		tmux new-session -s "$AUTO_TMUX_SESSION_NAME"
 	fi
 	# exit
 	# Not exit in order to use shell outside of tmux on occasion...
