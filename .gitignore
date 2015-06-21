@@ -1,10 +1,12 @@
 vimfiles/vim/bundles/*
-!vimfiles/vim/bundles/manual
+!vimfiles/vim/bundles/NeoBundle.lock
 vimfiles/vim/neobundlefile_compiled.vim
+vimfiles/vim/cache
+
+*.zwc
 
 emacs.d/auto-save-list
 emacs.d/css
-emacs.d/custom.el
 emacs.d/el-get
 emacs.d/el-get-init-files/*.elc
 emacs.d/elpa
@@ -13,10 +15,10 @@ emacs.d/scripts
 emacs.d/var
 emacs.d/bookmarks
 
-!Gemfile.local
-
 gitfiles/git_template/*
 
 miscfiles/vimperator/info
 
 clicoder.d/config.yml
+
+node_modules

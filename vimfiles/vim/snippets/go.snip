@@ -1,8 +1,35 @@
-snippet     for
-abbr        for init; condition; post
-options     head
-    for ${1:i} := ${2:0}; ${3}; ${4:$1++} {${0}}
-
 snippet     scan
 abbr        fmt.Scan
-    fmt.Scan(&${1})${0}
+  fmt.Scan(&${1})
+
+snippet     of
+abbr        os.OpenFile
+  ${1:f}, err := os.OpenFile(${2:filename}, ${3:os.O_WRONLY}, 0666)
+  if err != nil {
+    panic(err)
+  }
+  defer $1.close()
+
+# http://stackoverflow.com/a/12518877
+snippet     fnex
+abbr        if file not exists
+  if _, err := os.Stat(${1:filename}); os.IsNotExist(err) {
+    ${0:#:fmt.Printf("no such file or directory: %s", filename)}
+  }
+
+snippet     rand
+abbr        rand.Seed
+  rand.Seed(time.Now().UTC().UnixNano())
+
+snippet     forl
+abbr        for list
+  for e := l.Front(); e != nil; e = e.Next() {
+    fmt.Println(e.Value)
+  }
+
+# GoConvey snippets
+snippet     Convey
+options     head
+  Convey("${1:Test Description}",${2: t,} func() {
+    ${0}
+  })

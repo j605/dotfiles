@@ -1,5 +1,10 @@
 (setq debug-on-error t)
 
+;; create custom.el if it does not exist
+(defconst custom-file (expand-file-name "custom.el" user-emacs-directory))
+(unless (file-exists-p custom-file)
+  (write-region "" nil custom-file))
+
 ;; start as a server if there is no server
 (load "server")
 (unless (server-running-p) (server-start))
@@ -68,6 +73,7 @@
     evil
     evil-leader
     evil-surround
+    evil-tabs
     org-mode
     flycheck
     xml-rpc-el
@@ -104,7 +110,8 @@
 (setq is-mac (equal system-type 'darwin))
 
 ;; Setup extensions
-(require 'setup-org)
+(if (getenv "ORGMODE")
+  (require 'setup-org))
 (require 'setup-mail)
 
 ;; Setup global key-bindings
@@ -117,12 +124,10 @@
   (add-hook hook (lambda () (flyspell-mode -1))))
 
 ;; color
-(load-theme 'solarized-dark t)
-
-;; various
-(defun genki/remind-workout ()
-  (osx-notification "Get Active!" "Do some workout now."))
-(run-at-time "00:00" 3600 'genki/remind-workout)
+;; https://github.com/sellout/emacs-color-theme-solarized
+(load-theme 'solarized t)
+(set-frame-parameter nil 'background-mode 'dark)
+(set-terminal-parameter nil 'background-mode 'dark)
 
 ;; my scripts
 (setq my-scripts-dir (expand-file-name "my-scripts" user-emacs-directory))
@@ -132,4 +137,5 @@
 
 ;; GUI
 ;; timer is needed, see: http://www.emacswiki.org/emacs/FullScreen#toc3
-(run-with-idle-timer 0.1 nil 'maximize-frame)
+; disabling because I don't use GUI for now
+; (run-with-idle-timer 0.1 nil 'maximize-frame)

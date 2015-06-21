@@ -1,8 +1,5 @@
-# Source rvm environment
-if executable rvm; then
-	source $(rvm env --path)
-fi
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# Source rbenv environment
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Tell bundler to use local Gemfile
 function set_bundle_gemfile () {
@@ -13,3 +10,7 @@ function set_bundle_gemfile () {
 	fi
 }
 preexec_functions+=(set_bundle_gemfile)
+
+# Make gem-src use ghq
+# https://github.com/amatsuda/gem-src
+export GEMSRC_USE_GHQ=1

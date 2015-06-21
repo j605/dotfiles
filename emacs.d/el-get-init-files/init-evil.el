@@ -5,6 +5,8 @@
 ;; mappings
 (define-key evil-normal-state-map ";" 'evil-ex)
 (define-key evil-normal-state-map ":" 'evil-repeat-find-char)
+(define-key evil-normal-state-map " " 'universal-argument)
+(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 
 (define-key evil-normal-state-map ",;" 'eval-expression)
 (define-key evil-normal-state-map ",x" 'execute-extended-command)
@@ -73,7 +75,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
        "J" 'mu4e-headers-jump-to-maildir
        "j" 'evil-next-line
        "C" 'mu4e-compose-new
-       "o" 'mu4e-view-message
+       "o" 'mu4e-view-go-to-url
        "Q" 'mu4e-raw-view-quit-buffer
        "/" 'evil-search-forward
        "q" 'mu4e~view-quit-buffer

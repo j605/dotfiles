@@ -99,15 +99,48 @@ inline int MAKE_MASK(ULL upper, ULL lower) { assert(lower < 64 && upper < 64 && 
 #define darr_range(a, f, t) if (opt_debug) { copy( (a) + (f), (a) + (t), ostream_iterator<int>(cerr, " ") ); cerr << endl; }
 #define dvec(v) if (opt_debug) { copy( ALL(v), ostream_iterator<int>(cerr, " ") ); cerr << endl; }
 #define darr2(a) if (opt_debug) { FOR(__i, 0, (arrsz(a))){ darr( (a)[__i] ); } }
-#define dvec2(v) if (opt_debug) { FOR(__i, 0, v.size()){ dvec( (v)[__i] ); } }
 #define WAIT() if (opt_debug) { string _wait_; cerr << "(hit return to continue)" << endl; getline(cin, _wait_); }
 #define dump(x) if (opt_debug) { cerr << " [L" << __LINE__ << "] " << #x << " = " << (x) << endl; }
+#define dumpl(x) if (opt_debug) { cerr << " [L" << __LINE__ << "] " << #x << endl << (x) << endl; }
 #define dumpf() if (opt_debug) { cerr << __PRETTY_FUNCTION__ << endl; }
-#define dumpv(x) if (opt_debug) { cerr << " [L:" << __LINE__ << "] " << #x << " = "; REP(q, (x).size()) cerr << (x)[q] << " "; cerr << endl; }
 #define where() if (opt_debug) { cerr << __FILE__ << ": " << __PRETTY_FUNCTION__ << " [L: " << __LINE__ << "]" << endl; }
 #define show_bits(b, s) if(opt_debug) { REP(i, s) { cerr << BITOF(b, s-1-i); if(i%4 == 3) cerr << ' '; } cerr << endl; }
-template<typename T1, typename T2> ostream& operator<<(ostream& s, const pair<T1, T2>& d) {return s << "(" << d.first << ", " << d.second << ")";}
+
+// ostreams {{{
+// complex
 template<typename T> ostream& operator<<(ostream& s, const complex<T>& d) {return s << "(" << d.real() << ", " << d.imag() << ")";}
+
+// pair
+template<typename T1, typename T2> ostream& operator<<(ostream& s, const pair<T1, T2>& d) {return s << "(" << d.first << ", " << d.second << ")";}
+
+// vector
+template<typename T> ostream& operator<<(ostream& s, const vector<T>& d) {
+	int len = d.size();
+	REP (i, len) {
+		s << d[i]; if (i < len - 1) s << "\t";
+	}
+	return s;
+}
+
+// 2 dimentional vector
+template<typename T> ostream& operator<<(ostream& s, const vector< vector<T> >& d) {
+	int len = d.size();
+	REP (i, len) {
+		s << d[i] << endl;
+	}
+	return s;
+}
+
+// map
+template<typename T1, typename T2> ostream& operator<<(ostream& s, const map<T1, T2>& m) {
+	s << "{" << endl;
+	for (typeof(m.begin()) itr = m.begin(); itr != m.end(); ++itr) {
+		s << "\t" << (*itr).first << " : " << (*itr).second << endl;
+	}
+	s << "}" << endl;
+	return s;
+}
+// }}}
 // }}}
 // }}}
 // time {{{
@@ -129,6 +162,14 @@ bool in_field(P p) {
 	return (0 <= p.Y && p.Y < g_height) && (0 <= p.X && p.X < g_width);
 }
 // }}}
+// input and output {{{
+inline void input(string filename) {
+	freopen(filename.c_str(), "r", stdin);
+}
+inline void output(string filename) {
+	freopen(filename.c_str(), "w", stdout);
+}
+// }}}
 // }}}
 bool opt_debug = false;
 
@@ -146,6 +187,9 @@ int main(int argc, char** argv) {
 		}
 	}
 	// }}}
+
+	input("./inputs/0.txt");
+	// output("./outputs/0.txt");
 
 	<`0`>
 

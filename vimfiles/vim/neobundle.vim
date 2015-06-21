@@ -57,19 +57,24 @@ call neobundle#begin(expand('~/.vim/bundles'))
 " Let neobundle manage neobundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Manual plugins
-NeoBundleLocal ~/.vim/bundles/manual
-
 " Setup bundles {{{
 let s:neobundlefile = expand('~/.vim/bundles.yml')
 let s:neobundlefile_compiled = expand('~/.vim/neobundlefile_compiled.vim')
 if getftime(s:neobundlefile) > getftime(s:neobundlefile_compiled)
 	silent !compile-vimrc
+	NeoBundleClearCache
+	" Delete ftdetect files copied by NeoBundle (I don't need it for now)
+	call neobundle#util#cleandir('ftdetect')
+	call neobundle#util#cleandir('after/ftdetect')
 endif
 
-execute "source" s:neobundlefile_compiled
-let s:bundle_names = map(neobundle#config#get_neobundles(), 'v:val["name"]')
+if neobundle#load_cache()
+	" when cache loading fails
+	execute "source" s:neobundlefile_compiled
+	NeoBundleSaveCache
+endif
 
+let s:bundle_names = map(neobundle#config#get_neobundles(), 'v:val["name"]')
 for bundle_name in s:bundle_names
 	" Original hook: on_bundle
 	if filereadable(s:plugin_setting_filename(bundle_name, 'on_bundle'))

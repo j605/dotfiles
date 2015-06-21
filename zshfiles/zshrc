@@ -10,14 +10,23 @@ compinit
 # Jump into tmux session automatically {{{
 export AUTO_TMUX_SESSION_NAME="j605"
 if [ -z $TMUX ]; then
+	# assume $SHELL is zsh, and open org mode automatically
+	# (and set window name 'org' so that it can be used by select-window)
 	tmux attach-session -t "$AUTO_TMUX_SESSION_NAME"
 	if [ $? -ne 0 ]; then
-		tmux new-session -s "$AUTO_TMUX_SESSION_NAME"
+		# Init new tmux session (play around with some tmux scripting)
+		tmux new-session -s "$AUTO_TMUX_SESSION_NAME" -n "org" "$SHELL -i -c 'org'"
 	fi
 	# exit
 	# Not exit in order to use shell outside of tmux on occasion...
 fi
 # }}}
+
+# FIXME: this should be done using LaunchAgent, but it does not work for now
+tmux list-session | grep 'wordstack' > /dev/null
+if [ $? -ne 0 ]; then
+	TMUX='' tmux new-session -d -s 'wordstack' -n 'wordstack' '/opt/boxen/nodenv/shims/node ~/dotfiles/miscfiles/word-stack-server.js'
+fi
 
 # ==================================================
 # fpath {{{
@@ -53,6 +62,9 @@ source $DOTDIR/submodules/zsh-history-substring-search/zsh-history-substring-sea
 # More completions from https://github.com/zsh-users/zsh-completions
 fpath+=($DOTDIR/submodules/zsh-completions/src)
 
+# stdkeep (https://github.com/Genki-S/stdkeep)
+source $DOTDIR/submodules/stdkeep/stdkeep.zsh
+
 # Source my prompt
 source $DOTDIR/submodules/zsh-git-prompt/zshrc.sh
 export __GIT_PROMPT_DIR=$DOTDIR/submodules/zsh-git-prompt
@@ -87,6 +99,8 @@ rcfiles=(
 	direnv.zsh
 	peco.zsh
 	cdd.zsh
+	go.zsh
+	docker.zsh
 )
 for f in $rcfiles
 do

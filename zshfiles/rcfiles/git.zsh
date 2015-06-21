@@ -25,6 +25,9 @@ function preq() {
 # ghi -- github issues from command line
 # not using ghi
 #export GHI_TOKEN=`cat ~/private_files/ghi_token`
+# ghq
+# http://weblog.bulknews.net/post/89635306479/ghq-peco-percol
+alias gcd='cd $(ghq list --full-path | peco)'
 
 # Sugers
 alias gs="git status --short --untracked-files"
@@ -53,7 +56,15 @@ alias gsd="git stash show"
 alias gsdiff="git stash show --color"
 alias gsp="git stash pop --index"
 alias gsdrop="git stash drop"
-alias gbw="git browse"
+alias gbws='git browse $(ghq list | sed "s!github\.com/!!" | peco)'
+function gbw() {
+  root=$(git-root)
+  if [ -z "$root" ]; then
+    gbws
+  else
+    git browse
+  fi
+}
 # git branch select
 alias gbs="git branch | peco | xargs git checkout"
 # list things

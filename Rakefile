@@ -5,6 +5,14 @@ require 'uri'
 
 HOME = ENV['HOME']
 DOTDIR = "#{HOME}/dotfiles"
+BREW_PREFIX = ENV['BREW_PREFIX'] || `which brew > /dev/null && brew --prefix || echo ""`
+raise 'BREW_PREFIX environment variable is not set' if BREW_PREFIX.to_s.empty?
+BREW = "#{BREW_PREFIX}/bin/brew"
+
+# Set path to include BREW_PREFIX/bin
+paths = ENV['PATH'].split(':')
+paths.unshift("#{BREW_PREFIX}/bin")
+ENV['PATH'] = paths.join(':')
 
 desc 'Do the best.'
 task :install => [
@@ -15,7 +23,6 @@ task :install => [
   :update_injection,
   :brew_essentials,
   :orgmode,
-  :setup_osx,
   :deploy ] do
   puts 'changing login shell...'
   shell = '/usr/local/bin/zsh'
@@ -30,24 +37,29 @@ desc 'Install softwares'
 task :bundle_up => [
   :brew_optionals,
   :go_get,
-  :ghq_get] do
+  :ghq_get,
+  :npm_install,
+  :bundle_install,
+  :install_rbenv_plugins,
+  :setup_osx] do
 end
 
 desc 'install homebrew'
 task :install_homebrew do
   puts 'Installing Homebrew...'
-  run %{ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" }
-  run %{ brew doctor }
+  run %{ which #{BREW} || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" }
+  run %{ #{BREW} doctor }
 end
 
 desc 'install essential brew packages'
 task :brew_essentials do
-  run %{ zsh setup/brewfile.zsh }
+  run %{ brew tap Homebrew/bundle }
+  run %{ brew bundle --file=Brewfile }
 end
 
 desc 'install optional brew packages'
 task :brew_optionals do
-  run %{ zsh setup/brewfile_optional.zsh }
+  run %{ brew bundle --file=Brewfile.optional }
 end
 
 desc 'setup osx'
@@ -59,7 +71,7 @@ end
 desc 'install ruby'
 task :install_ruby do
   puts 'Installing Ruby...'
-  run %{ brew install rbenv ruby-build }
+  run %{ #{BREW} install rbenv ruby-build }
   run %{ rbenv install 2.1.3 } # TODO: ask version to user
   run %{ rbenv rehash }
   run %{ rbenv global 2.1.3 }
@@ -77,6 +89,7 @@ task :deploy do
   end
 
   my_ln("#{DOTDIR}/miscfiles/get-shit-done.ini", "#{HOME}/.config/get-shit-done.ini")
+  my_ln("#{DOTDIR}/macfiles/Library/Application\\ Support/Karabiner/private.xml", "#{HOME}/Library/Application\\ Support/Karabiner/private.xml")
 end
 
 desc 'Update submodules'
@@ -116,6 +129,30 @@ task :ghq_get do
   end
 end
 
+desc 'Install npm packages'
+task :npm_install do
+  Dir.chdir(DOTDIR) do
+    run %{ npm install }
+  end
+end
+
+desc 'Install ruby gems'
+task :bundle_install do
+  Dir.chdir(DOTDIR) do
+    run %{ gem install bundler }
+    run %{ bundle install }
+  end
+end
+
+desc 'Install rbenv plugins'
+task :install_rbenv_plugins do
+  if ENV['RBENV_ROOT'].to_s.empty?
+    warn '$RBENV_ROOT is not defined'
+    return
+  end
+  run %{ #{DOTDIR}/setup/install-rbenv-plugins.sh }
+end
+
 desc 'Generate ctags files for ghq repositories'
 task :ghq_ctags do
   repos = YAML.load_file("#{DOTDIR}/config/ghq.yml")
@@ -132,6 +169,7 @@ task :ghq_dict do
   end
 end
 
+# FIXME: use $RBENV_ROOT
 desc 'Generate dictionary files (for vim completion) for ruby'
 task :ruby_dict do
   # Ref: http://henry.animeo.jp/blog/2013/08/24/ruby-dict/
@@ -261,6 +299,10 @@ def my_ln(src, dst, sudo = false)
   dir = File.dirname(dst)
   FileUtils.mkdir_p(dir) unless File.directory?(dir)
   run %{ #{sudo ? 'sudo' : ''} ln -s #{src} #{dst} }
+end
+
+def warn(msg)
+  STDERR.puts msg
 end
 
 # OS check (http://stackoverflow.com/questions/170956/how-can-i-find-which-operating-system-my-ruby-program-is-running-on)

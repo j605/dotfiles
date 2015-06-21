@@ -16,6 +16,11 @@
     autoload:
         on_source:
             - dash.vim
+- basyura/twibill.vim:
+    lazy: 1
+    autoload:
+        on_source:
+            - TweetVim
 # }}}
 
 # It just works (No need to invoke consciously, just configure.) {{{
@@ -25,22 +30,26 @@
         insert: 1
 - tpope/vim-repeat:
 - tpope/vim-sleuth:
-- Raimondi/delimitMate:
-    lazy: 1
-    autoload:
-        insert: 1
 - MarcWeber/vim-addon-local-vimrc:
 - Shougo/vimproc:
     build:
         mac: make -f make_mac.mak
         unix: make -f make_unix.mak
-- vim-scripts/sudo.vim:
 - chrisbra/Recover.vim:
 - tpope/vim-speeddating:
-- osyo-manga/shabadou.vim:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>SpeedDating
 - takac/vim-hardtime:
 - kana/vim-submode:
 - amdt/vim-niji:
+- tpope/vim-characterize:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(characterize)
+- Konfekt/FastFold:
 # }}}
 
 # Coding {{{
@@ -62,22 +71,44 @@
     lazy: 1
     autoload:
         function_prefix: vim_snippets
-- ujihisa/quicklearn:
+# - ujihisa/quicklearn:
 - thinca/vim-qfreplace:
+    lazy: 1
+    autoload:
+        commands:
+            - Qfreplace
 - AndrewRadev/linediff.vim:
+    lazy: 1
+    autoload:
+        commands:
+            - Linediff
+            - LinediffReset
 - AndrewRadev/sideways.vim:
+    lazy: 1
+    autoload:
+        commands:
+            - SidewaysLeft
+            - SidewaysRight
 - sjl/gundo.vim:
     lazy: 1
     autoload:
         commands:
             - GundoShow
 - vim-scripts/UnconditionalPaste:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>UnconditionalPaste
 - godlygeek/tabular:
     lazy: 1
     autoload:
         commands:
             - Tabularize
 - t9md/vim-textmanip:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(textmanip
 - AndrewRadev/splitjoin.vim:
     lazy: 1
     autoload:
@@ -90,9 +121,21 @@
         commands:
             - Switch
 - tpope/vim-abolish:
+    lazy: 1
+    autoload:
+        commands:
+            - Abolish
+            - S
+            - Subvert
+        mappings:
+            - <Plug>Coerce
 - tpope/vim-surround:
 - scrooloose/nerdcommenter:
 - AndrewRadev/inline_edit.vim:
+    lazy: 1
+    autoload:
+        commands:
+            - InlineEdit
 - sk1418/Join:
     lazy: 1
     autoload:
@@ -104,6 +147,20 @@
     autoload:
         commands:
             - SyntasticCheck
+- Chiel92/vim-autoformat:
+    lazy: 1
+    autoload:
+        commands:
+            - Autoformat
+- janko-m/vim-test:
+    lazy: 1
+    autoload:
+        commands:
+            - TestNearest
+            - TestFile
+            - TestSuite
+            - TestLast
+            - TestVisit
 
 ## Completion {{{
 - Shougo/neocomplete:
@@ -114,16 +171,32 @@
     lazy: 1
     autoload:
         insert: 1
-- wellle/tmux-complete.vim:
+- Wolfy87/vim-expand:
     lazy: 1
     autoload:
-        insert: 1
+        commands:
+            - Expand
 ## }}}
 
 # }}}
 
 # Navigation {{{
 - majutsushi/tagbar:
+    lazy: 1
+    autoload:
+        commands:
+            - Tagbar
+            - TagbarCurrentTag
+            - TagbarDebugEnd
+            - TagbarOpen
+            - TagbarSetFoldlevel
+            - TagbarToggle
+            - TagbarClose
+            - TagbarDebug
+            - TagbarGetTypeConfig
+            - TagbarOpenAutoClose
+            - TagbarShowTag
+            - TagbarTogglePause
 - Shougo/vimfiler:
     lazy: 1
     autoload:
@@ -147,8 +220,12 @@
             - Ag
             - LAg
 - justinmk/vim-sneak:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>Sneak
+            - <Plug>VSneak
 - vim-scripts/matchit.zip:
-- wellle/targets.vim:
 # }}}
 
 # Debugging {{{
@@ -158,11 +235,23 @@
 
 # Reference {{{
 - rizzatti/dash.vim:
+    lazy: 1
+    autoload:
+        commands:
+            - Dash
+            - DashKeywords
+        mappings:
+            - <Plug>DashSearch
 - thinca/vim-ref:
     lazy: 1
     autoload:
         commands:
             - Ref
+- Keithbsmiley/investigate.vim:
+    lazy: 1
+    autoload:
+        functions:
+            - investigate#Investigate
 - taka84u9/vim-ref-ri:
 - yuratomo/w3m.vim:
     lazy: 1
@@ -175,7 +264,7 @@
 - Shougo/unite.vim:
 # don't make it lazy so that neomru can register files
 - Shougo/neomru.vim:
-- h1mesuke/unite-outline:
+- Shougo/unite-outline:
     lazy: 1
     autoload:
         unite_sources:
@@ -285,6 +374,10 @@
         filename_patterns:
             - .*fugitiveblame
 - int3/vim-extradite:
+    lazy: 1
+    autoload:
+        commands:
+            - Extradite
 - gregsexton/gitv:
     lazy: 1
     autoload:
@@ -295,7 +388,6 @@
 
 # Visual {{{
 - altercation/vim-colors-solarized:
-- mhinz/vim-signify:
 - t9md/vim-quickhl:
 - itchyny/lightline.vim:
 - kshenoy/vim-signature:
@@ -326,20 +418,66 @@
 # Text Objects {{{
 - kana/vim-textobj-user:
 - kana/vim-textobj-entire:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(textobj-entire-
 - kana/vim-textobj-function:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(textobj-function-
 - kana/vim-textobj-datetime:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(textobj-datetime-
 - kana/vim-textobj-indent:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(textobj-indent-
 - kana/vim-textobj-fold:
-- kana/vim-textobj-line:
-- thinca/vim-textobj-comment:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(textobj-fold-
 - thinca/vim-textobj-between:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(textobj-between-
 - lucapette/vim-textobj-underscore:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(textobj-underscore-
 - coderifous/textobj-word-column.vim:
+    lazy: 1
+    autoload:
+        functions:
+            - TextObjWordBasedColumn
 - nelstrom/vim-textobj-rubyblock:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(textobj-rubyblock-
 - bootleq/vim-textobj-rubysymbol:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(textobj-rubysymbol-
 - deris/vim-textobj-enclosedsyntax:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(textobj-enclosedsyntax-
 - Julian/vim-textobj-variable-segment:
-- osyo-manga/vim-textobj-blockwise:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(textobj-variable-
+- wellle/targets.vim:
 # }}}
 
 # Writing {{{
@@ -358,19 +496,48 @@
 
 # Other Utilities {{{
 - MattesGroeger/vim-bookmarks:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>Bookmark
 - mattn/gist-vim:
     lazy: 1
     autoload:
         commands:
             - Gist
-- kana/vim-fakeclip:
-- vim-scripts/TwitVim:
+# - kana/vim-fakeclip:
+- basyura/TweetVim:
+    lazy: 1
+    autoload:
+        commands:
+            - TweetVimVersion
+            - TweetVimAddAccount
+            - TweetVimSwitchAccount
+            - TweetVimHomeTimeline
+            - TweetVimMentions
+            - TweetVimUserTimeline
+            - TweetVimListStatuses
+            - TweetVimSearch
+            - TweetVimSay
+            - TweetVimUserStream
+            - TweetVimCommandSay
+            - TweetVimCurrentLineSay
+            - TweetVimClearIcon
 - thinca/vim-quickrun:
+    lazy: 1
+    autoload:
+        commands:
+            - QuickRun
 - fuenor/qfixhowm:
     lazy: 1
     autoload:
         function_prefix: qfixmemo
 - sjl/clam.vim:
+    lazy: 1
+    autoload:
+        commands:
+            - Clam
+            - ClamVisual
 - gregsexton/VimCalc:
     lazy: 1
     autoload:
@@ -379,16 +546,29 @@
 - jpalardy/vim-slime:
     lazy: 1
     autoload:
-        commands:
-            - SlimeConfig
+        mappings:
+            - <Plug>SlimeRegionSend
+            - <Plug>SlimeLineSend
+            - <Plug>SlimeParagraphSend
+            - <Plug>SlimeMotionSend
+            - <Plug>SlimeConfig
 - benmills/vimux:
     lazy: 1
     autoload:
         commands:
             - VimuxBufferDir
 - tyru/vim-altercmd:
-- kana/vim-fakeclip:
 - tyru/open-browser.vim:
+    lazy: 1
+    autoload:
+        on_source:
+            - twibill.vim
+        commands:
+            - OpenBrowser
+            - OpenBrowserSearch
+            - OpenBrowserSmartSearch
+        mappings:
+            - <Plug>(openbrowser
 - szw/vim-ctrlspace:
     lazy: 1
     autoload:
@@ -396,7 +576,20 @@
             - CtrlSpace
 # obsession resumes recording after restoring session, so don't make this lazy
 - tpope/vim-obsession:
+    lazy: 1
+    autoload:
+        commands:
+            - Obsession
 - tpope/vim-dispatch:
+    lazy: 1
+    autoload:
+        commands:
+            - Make
+            - Copen
+            - Dispatch
+            - Focus
+            - FocusDispatch
+            - Start
 - Shougo/junkfile.vim:
     lazy: 1
     autoload:
@@ -405,48 +598,41 @@
         unite_sources:
             - junkfile
             - junkfile/new
-- mhinz/vim-startify:
 - mhinz/vim-randomtag:
+    lazy: 1
+    autoload:
+        commands:
+            - Random
 - tpope/vim-capslock:
     lazy: 1
     autoload:
         mappings:
             - <Plug>CapsLockToggle
+- osyo-manga/vim-vigemo:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(vigemo-search)
 # }}}
 
 # Filetype Specific {{{
 
 ## Ruby {{{
-- vim-ruby/vim-ruby:
-    lazy: 1
-    autoload:
-        filetypes:
-            - ruby
 - tpope/vim-rails:
 # - tpope/vim-rake:
     # lazy: 1
     # autoload:
         # filetypes:
             # - ruby
-- tpope/vim-bundler:
-    lazy: 1
-    autoload:
-        filetypes:
-            - ruby
 - ngmy/vim-rubocop:
     lazy: 1
     autoload:
         commands:
             - RuboCop
-- thoughtbot/vim-rspec:
-    lazy: 1
-    autoload:
-        filetypes:
-            - ruby
 ## }}}
 
 ## Go {{{
-- jnwhiteh/vim-golang:
+- fatih/vim-go:
     lazy: 1
     autoload:
         filetypes:
@@ -572,12 +758,20 @@
             - GoshREPL
 # }}}
 
+## Swift {{{
+- toyamarinyon/vim-swift:
+    lazy: 1
+    autoload:
+        filetypes:
+            - swift
+# }}}
+
 ## Others {{{
 - kannokanno/previm:
     lazy: 1
     autoload:
-        filetypes:
-            - markdown
+        commands:
+            - PrevimOpen
 - LaTeX-Box-Team/LaTeX-Box:
     lazy: 1
     autoload:
@@ -588,11 +782,6 @@
     autoload:
         filetypes:
             - scala
-- chrisbra/csv.vim:
-    lazy: 1
-    autoload:
-        filetypes:
-            - csv
 - vim-scripts/scilab.vim:
     lazy: 1
     autoload:
@@ -612,6 +801,15 @@
             - rout
             - rrst
             - rmd
+    lazy: 1
+    autoload:
+        filetypes:
+            - tmux
+- markcornick/vim-terraform:
+    lazy: 1
+    autoload:
+        filetypes:
+            - terraform
 ## }}}
 
 # }}}
@@ -626,16 +824,36 @@
         functions:
             - PrettyPrint
             - PP
-# }}}
-
-# Manual Plugins {{{
-- migemo:
-    type: nosync
-    base: ~/.vim/bundles/manual
+- mattn/benchvimrc-vim:
     lazy: 1
     autoload:
         commands:
-            Migemo
+            - BenchVimrc
+# }}}
+
+# Plugins I stopped using {{{
+# too slow, and I should not edit CSV with vim, maybe...
+# - chrisbra/csv.vim:
+# other distinct tools (`dictanki` of mine) suffices, and build is kinda tedious
+# - alpaca-tc/alpaca_english:
+# it kills the last text object mapping, and I don't use line object anyway
+# - kana/vim-textobj-line:
+# textobj-word-column suffices
+# - osyo-manga/vim-textobj-blockwise:
+# mostly replace-able by textobj-between or :normal ^lC
+# - thinca/vim-textobj-comment:
+# it breaks dot repeat and it's more annoying than auto closing is useful
+# - Raimondi/delimitMate:
+# unbearably slow... with gitgutter `:Time w` => `1.332 seconds to run :w`, without gitgutter: `:Time w` => `0.024 seconds to run :w`
+# - airblade/vim-gitgutter:
+# as slow as vim-gitgutter
+# - mhinz/vim-signify:
+# this makes insert mode too slow, but only useful rarely
+# - wellle/tmux-complete.vim:
+# it seems vim comes with enough ruby support by default, and I don't miss any feature of this plugin (to be honest, I know nothing what this does due to the lack of documentation)
+# - vim-ruby/vim-ruby:
+# this makes opening up ruby files super slow. behaves like filetype is set twice?
+# - tpope/vim-bundler:
 # }}}
 
 # vim: iskeyword+=/,.,- foldmethod=marker

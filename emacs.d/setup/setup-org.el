@@ -12,12 +12,6 @@
                 nil 0 nil
                 title message))
 
-(defun genki/org-check-clocking ()
-  (when (and (not (org-clocking-p))
-             (eq org-pomodoro-state :none))
-    (osx-notification "Not Clocking In" "Be Mindful of Your Life")))
-(run-at-time "00:00" 60 'genki/org-check-clocking)
-
 ;; sets the default workflow keywords and their faces
 (setq org-todo-keywords
       '((sequence "TODO(t)" "DOING(n)" "|" "DONE(d!/!)")
@@ -40,6 +34,7 @@
                       ("@work" . ?w)
                       ("@home" . ?h)
                       ("@univ" . ?u)
+                      ("@errand" . ?e)
                       (:endgroup . nil)
                       (:startgroup . nil)
                       ("Q1" . ?1)
@@ -62,6 +57,10 @@
                              "~/org/archives.org"
                              "~/org/checklist.org"
                              "~/org/goals.org"))
+;; Create agenda files if not exist
+(dolist (file org-agenda-files)
+  (unless (file-exists-p file)
+    (write-region "" nil file)))
 
 (setq org-agenda-custom-commands
       `(("R" . "for reporting")
@@ -74,6 +73,8 @@
 
 ;; my org settings
 (custom-set-variables
+ '(org-global-properties
+    '(("Effort_ALL" . "0 0:01 0:05 0:10 0:30 1:00 1:30 2:00 2:30 3:00 3:30 4:00 4:30 5:00")))
  '(org-startup-indented t)
  '(org-startup-truncated nil)
  '(org-log-done t)
@@ -107,7 +108,9 @@
  '(org-clock-persist-query-resume nil)
  ;; Include current clocking task in clock reports
  '(org-clock-report-include-clocking-task t)
- '(org-columns-default-format "%25ITEM %15SCHEDULED %6Effort{:} %8CLOCKSUM")
+ ;; "Effort" (as noted in http://orgmode.org/manual/Effort-estimates.html) does not work actually.
+ ;; "EFFORT" does. (for homebrew installed emacs 22.1.1 and 24.5.1, at least)
+ '(org-columns-default-format "%50ITEM(Task) %20SCHEDULED %20EFFORT{:} %10CLOCKSUM")
  ;; provide refile targets as paths, including the file name
  ;; (without directory) as level 1 of the path
  '(org-refile-use-outline-path 'file)
@@ -180,21 +183,23 @@
 (setq org-default-notes-file "~/org/inbox.org")
 (setq org-capture-templates
       '(("t" "Todo" entry (file "~/org/inbox.org")
-         "* TODO %?\n%U\nfrom:%a\n** Why do this?\n" :clock-in t :clock-resume t)
+         "* TODO %?\n%U\nfrom:%a\n** Why do this?\n")
         ("f" "Failure" entry (file "~/org/inbox.org")
-         (file "~/org/templates/failure_reflection.txt") :clock-in t :clock-resume t)
+         (file "~/org/templates/failure_reflection.txt"))
         ("m" "Meeting" entry (file "~/org/inbox.org")
-         "* MEETING %?\n%U\n** References\n** Learnings\n" :clock-in t :clock-resume t)
+         "* MEETING %?\n%U\n** References\n** Learnings\n")
         ("n" "Note" entry (file "~/org/inbox.org")
-         "* %?  :note:\n%U\nfrom:%a\n" :clock-in t :clock-resume t)
+         "* %?  :note:\n%U\nfrom:%a\n")
         ("p" "Phone call" entry (file "~/org/inbox.org")
-         "* PHONE %?\n%U" :clock-in t :clock-resume t)
+         "* PHONE %?\n%U")
         ("r" "respond" entry (file "~/org/inbox.org")
-         "* TODO Respond to %a\nSCHEDULED: %t\n%U\n" :clock-in t :clock-resume t :immediate-finish t)
+         "* TODO Respond to %a\nSCHEDULED: %t\n%U\n" :immediate-finish t)
         ("s" "Spark" entry (file "~/org/spark.org")
-         "* TODO %? :idea:\n" :clock-in t :clock-resume t)
+         "* TODO %? :idea:\n")
         ("j" "Journal" entry (file+datetree "~/org/journal.org")
-         (file "~/org/templates/journal.txt") :clock-in t :clock-resume t)
+         (file "~/org/templates/journal.txt"))
+        ("w" "Workout" entry (file+datetree "~/org/journal.org")
+         "* %?  :workout:\n%U")
         ("7" "750 words" entry (file+datetree "~/org/journal.org")
          "* %?\n%U" :clock-in t :clock-resume t)))
 

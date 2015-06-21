@@ -1,10 +1,19 @@
-function! Genki_yaml_load(filename)
+function! Genki_yaml_load_with_cache(filename)
+	let l:cachedir = expand('~/.vim/cache/yaml')
+	if !isdirectory(l:cachedir) | call mkdir(l:cachedir, 'p') | endif
+	let l:cachefile = l:cachedir . '/' . substitute(expand(a:filename), '/', '+', 'g') . '.vim'
+	if filereadable(l:cachefile) && getftime(a:filename) <= getftime(l:cachefile)
+		return eval(join(readfile(l:cachefile), "\n"))
+	endif
+
 	ruby << EOF
 	require 'yaml'
 	obj = YAML.load_file(File.expand_path(VIM::evaluate('a:filename')))
 	obj_hash = obj.inspect.gsub('=>', ':').gsub('nil', '{}')
 	VIM::command("let l:ret = #{obj_hash}")
 EOF
+
+	call writefile([string(l:ret)], l:cachefile)
 	return l:ret
 endfunction
 
@@ -15,16 +24,6 @@ function! Genki_yaml_write(filename, obj)
 	fname = File.expand_path(VIM::evaluate('a:filename'))
 	File.write(File.expand_path(VIM::evaluate('a:filename')), obj.to_yaml)
 EOF
-endfunction
-
-function! Genki_my_insert_cr_mapping()
-	if neobundle#is_sourced('vim-endwise') && neobundle#is_sourced('delimitMate')
-		imap <CR> <Plug>delimitMateCR<Plug>DiscretionaryEnd
-	elseif neobundle#is_sourced('vim-endwise')
-		imap <CR> <Plug>DiscretionaryEnd
-	elseif neobundle#is_sourced('delimitMate')
-		imap <CR> <Plug>delimitMateCR
-	endif
 endfunction
 
 " Make it possible to issue AlterCommand before vim-altercmd is sourced
@@ -70,6 +69,7 @@ endfunction
 
 " Quick access to Google
 function! Genki_google(query)
+	NeoBundleSource open-browser.vim
 	let l:query = a:query
 	" if in vim-ref (type query again? No thanks.)
 	if exists("b:ref_history")

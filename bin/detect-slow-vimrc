@@ -1,0 +1,30 @@
+#!/bin/bash
+
+tmpfile=$(mktemp)
+vim --startuptime "$tmpfile" -c 'quit' "$@"
+
+outfile=$(mktemp)
+
+# start with clock time 0
+prev_line="000.000  000.000"
+while read line; do
+  echo "$line" | grep '^\d' > /dev/null
+  if [ $? -ne 0 ]; then
+    continue
+  fi
+
+  prev_clock=$(echo "$prev_line" | cut -d' ' -f1)
+  clock=$(echo "$line" | cut -d' ' -f1)
+  clock_diff=$(echo "scale=3; ${clock//^00*/0/} - ${prev_clock//^00*/0/}" | bc -q | sed 's/^\./0./')
+
+  echo "$clock_diff  $prev_line" >> "$outfile"
+  prev_line="$line"
+done < "$tmpfile"
+
+echo "times in msec"
+printf "  time to execute (diff in clock)\tclock\ttime to source (self+sourced)\ttime to source (self):\tsourced script\n"
+grep '^\(\d\|\.\)\+\s\+\(\d\|\.\)\+\s\+\(\d\|\.\)\+' < "$outfile" \
+  | sort -k1 -n -r
+
+echo "startuptime: $tmpfile"
+echo "modified startuptime: $outfile"

@@ -12,6 +12,7 @@ set smartcase
 " displaying text {{{
 set scrolloff=3
 set wrap
+set display=lastline
 set list
 set listchars=tab:>\ ,trail:_,extends:>,precedes:<,conceal:#
 set number
@@ -19,7 +20,7 @@ set relativenumber
 "}}}
 " syntax, highlighting and spelling {{{
 set nohlsearch
-set cursorline
+set nocursorline
 set colorcolumn=80
 set conceallevel=1
 set concealcursor=inc
@@ -46,13 +47,15 @@ set noshowmode
 " editing text {{{
 set backspace=indent,eol,start
 set formatoptions=rqnmB1
+set pumheight=5
 set showmatch
+set matchtime=1
 "}}}
 " tabs and indenting {{{
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set noexpandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
 "}}}
 " folding {{{
 set foldmethod=marker
@@ -70,6 +73,7 @@ set cryptmethod=blowfish
 "}}}
 " the swap file {{{
 set swapfile
+set updatetime=1000
 "}}}
 " command line editing {{{
 set history=200
@@ -82,6 +86,13 @@ endif
 "}}}
 " executing external commands {{{
 set keywordprg=:help
+" Use par to reflow text
+" see: http://vimcasts.org/episodes/formatting-text-with-par/
+" Using `gw` will reflow with Vim's built-in algorithm.
+" stolen from https://github.com/rdlugosz/dotfiles/blob/fa77f78dab01b137ce8ec5db59c2720308c8373f/vimrc
+if executable('par')
+	set formatprg="par -h -w78 -B=.,\?_A_a "
+endif
 "}}}
 " multi-byte characters {{{
 set encoding=utf-8

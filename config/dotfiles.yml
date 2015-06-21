@@ -5,14 +5,13 @@
 - vimfiles:
     - vim
     - vimrc
-    - vimrc.minimal
 - rubyfiles:
     - pryrc
 - gitfiles:
     - gitconfig
     - gitignore_global
     - git_template_dir
-    - git_hooks
+    - githooks
     - tigrc
 - miscfiles:
     - ctags
@@ -26,5 +25,6 @@
     - offlineimaprc
     - offlineimap.py
     - js
+    - cheat
 - emacs.d
 - clicoder.d

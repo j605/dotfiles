@@ -126,21 +126,60 @@
      (mu4e-trash-folder  "/Waseda/Bin")
      (user-mail-address "genki-sugimoto@asagi.waseda.jp"))))
 
+(defun my-mu4e-insert-template ()
+  "Set the template for composing a message."
+  (let ((template-files (directory-files "~/org/templates/mail")))
+    (setq templates (remove ".." (remove "." template-files)))
+    (setq chosen-template (completing-read
+                            (format "Template: (%s) "
+                                    (mapconcat #'(lambda (var) var) templates "/"))
+                            templates
+                            nil t nil nil nil))
+    (if chosen-template
+      (insert-file-contents (concat "~/org/templates/mail/" chosen-template)))))
+(add-hook 'message-mode-hook 'my-mu4e-insert-template)
+
 (defun my-mu4e-set-account ()
   "Set the account for composing a message."
-  (let* ((account
-           (completing-read (format "Compose with account: (%s) "
-                                    (mapconcat #'(lambda (var) (car var)) my-mu4e-account-alist "/"))
-                            (mapcar #'(lambda (var) (car var)) my-mu4e-account-alist)
-                            nil t nil nil (caar my-mu4e-account-alist)))
-         (account-vars (cdr (assoc account my-mu4e-account-alist))))
-    (if account-vars
-      (mapc #'(lambda (var)
-                (set (car var) (cadr var)))
-            account-vars)
-      (error "No email account found"))))
+  (let* ((msg mu4e-compose-parent-message)
+         (account
+           (if msg
+             ; Set the From address based on the To address of the original.
+             ; http://www.djcbsoftware.nl/code/mu/mu4e/Compose-hooks.html#Compose-hooks
+             (cond
+               ((mu4e-message-contact-field-matches msg :to "cfhoyuk.reccos.nelg@gmail.com")
+                "Gmail")
+               ((mu4e-message-contact-field-matches msg :to "genki.sugimoto.jp@gmail.com")
+                "Public")
+               ((mu4e-message-contact-field-matches msg :to "genki-sugimoto@asagi.waseda.jp")
+                "Waseda")
+               (t nil))
+             nil)))
+    (unless account
+      (setq account
+            (completing-read (format "Compose with account: (%s) "
+                                     (mapconcat #'(lambda (var) (car var)) my-mu4e-account-alist "/"))
+                             (mapcar #'(lambda (var) (car var)) my-mu4e-account-alist)
+                             nil t nil nil (caar my-mu4e-account-alist))))
+    (let ((account-vars (cdr (assoc account my-mu4e-account-alist))))
+      (if account-vars
+        (mapc #'(lambda (var)
+                  (set (car var) (cadr var)))
+              account-vars)
+        (error "No email account found")))))
 
 (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
+
+; make it possible to attach file via helm-find-files
+(eval-after-load "helm-files"
+                 '(progn
+                    ; See the definition of helm-find-files-1 function to know how to make source
+                    (unless helm-source-find-files
+                      (setq helm-source-find-files (helm-make-source
+                                                     "Find Files" 'helm-source-ffiles)))
+                    (helm-add-action-to-source "Attach file"
+                                               'helm-ff-gnus-attach-files
+                                               helm-source-find-files)))
 
 (provide 'setup-mail)
 ;;; setup-mail.el ends here
