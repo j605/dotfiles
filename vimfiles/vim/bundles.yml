@@ -387,7 +387,7 @@
 # }}}
 
 # Visual {{{
-- altercation/vim-colors-solarized:
+- morhetz/gruvbox:
 - t9md/vim-quickhl:
 - itchyny/lightline.vim:
 - kshenoy/vim-signature:
@@ -809,7 +809,12 @@
     lazy: 1
     autoload:
         filetypes:
-            - terraform
+            - terraforma
+- j605/vim-vala:
+    lazy: 1
+    autoload:
+        filetypes:
+            - vala
 ## }}}
 
 # }}}
