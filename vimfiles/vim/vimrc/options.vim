@@ -24,6 +24,7 @@ set nocursorline
 set colorcolumn=80
 set conceallevel=1
 set concealcursor=inc
+syntax on
 "}}}
 " multiple windows {{{
 set laststatus=2
