@@ -141,4 +141,7 @@ bindkey -M isearch '^r' history-incremental-pattern-search-backward
 bindkey '^s' history-incremental-pattern-search-forward
 bindkey -M vicmd '^t' transpose-words
 
+# Make home and end keys work
+bindkey '[7~' beginning-of-line
+bindkey '[8~' end-of-line
 # Tip: press <C-v><key> to get <key>'s keycode
