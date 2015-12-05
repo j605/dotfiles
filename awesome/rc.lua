@@ -12,6 +12,8 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 -- Volume Widget
 require("volume")
+-- xdg menu
+xdg_menu = require("archmenu")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -56,11 +58,12 @@ function run_once(prg,arg_string,pname,screen)
 end
 
 run_once("dropbox")
+run_once("nm-applet")
 -- }}}
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/multicolor/theme.lua")
+beautiful.init("/usr/share/awesome/themes/dremora/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -108,7 +111,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, awful.layout.layouts[1])
+    tags[s] = awful.tag({ "web", "terminal", "files", "media" }, s, awful.layout.layouts[1])
 end
 -- }}}
 
@@ -122,6 +125,7 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+                                    { "applications", xdgmenu},
                                     { "open terminal", terminal }
                                   }
                         })
