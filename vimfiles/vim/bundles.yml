@@ -24,10 +24,6 @@
 # }}}
 
 # It just works (No need to invoke consciously, just configure.) {{{
-- tpope/vim-endwise:
-    lazy: 1
-    autoload:
-        insert: 1
 - tpope/vim-repeat:
 - tpope/vim-sleuth:
 - MarcWeber/vim-addon-local-vimrc:
@@ -161,6 +157,10 @@
             - TestSuite
             - TestLast
             - TestVisit
+- cohama/lexima.vim:
+    lazy: 1
+    autoload:
+        insert: 1
 
 ## Completion {{{
 - Shougo/neocomplete:
@@ -226,6 +226,13 @@
             - <Plug>Sneak
             - <Plug>VSneak
 - vim-scripts/matchit.zip:
+- tpope/vim-projectionist:
+    lazy: 1
+- haya14busa/incsearch.vim:
+    lazy: 1
+    autoload:
+        mappings:
+            - <Plug>(incsearch-
 # }}}
 
 # Debugging {{{
@@ -242,6 +249,14 @@
             - DashKeywords
         mappings:
             - <Plug>DashSearch
+- rhysd/devdocs.vim:
+    lazy: 1
+    autoload:
+        commands:
+            - DevDocs
+            - DevDocsAll
+        mappings:
+            - <Plug>(devdocs-under-cursor)
 - thinca/vim-ref:
     lazy: 1
     autoload:
@@ -279,7 +294,8 @@
     autoload:
         unite_sources:
             - rake
-- tsukkee/unite-tag:
+- Genki-S/unite-tag:
+    rev: my_hacks
     lazy: 1
     autoload:
         unite_sources:
@@ -557,6 +573,17 @@
     autoload:
         commands:
             - VimuxBufferDir
+            - VimuxClearRunnerHistory
+            - VimuxCloseRunner
+            - VimuxInspectRunner
+            - VimuxInterruptRunner
+            - VimuxPromptCommand
+            - VimuxRunCommand
+            - VimuxRunLastCommand
+            - VimuxScrollDownInspect
+            - VimuxScrollUpInspect
+            - VimuxTogglePane
+            - VimuxZoomRunner
 - tyru/vim-altercmd:
 - tyru/open-browser.vim:
     lazy: 1
@@ -613,12 +640,18 @@
     autoload:
         mappings:
             - <Plug>(vigemo-search)
+- mrtazz/simplenote.vim:
+    lazy: 1
+    autoload:
+        commands:
+            - Simplenote
 # }}}
 
 # Filetype Specific {{{
 
 ## Ruby {{{
 - tpope/vim-rails:
+    lazy: 1
 # - tpope/vim-rake:
     # lazy: 1
     # autoload:
@@ -629,6 +662,11 @@
     autoload:
         commands:
             - RuboCop
+- tpope/vim-bundler:
+    lazy: 1
+    autoload:
+        filetypes:
+            - ruby
 ## }}}
 
 ## Go {{{
@@ -793,7 +831,11 @@
         filetypes:
             - plantuml
 - tmux-plugins/vim-tmux:
-- jcfaria/Vim-R-plugin:
+    lazy: 1
+    autoload:
+        filetypes:
+	    - tmux
+-jcfaria/Vim-R-plugin:
     lazy: 1
     autoload:
         filetypes:
@@ -801,15 +843,13 @@
             - rout
             - rrst
             - rmd
-    lazy: 1
-    autoload:
-        filetypes:
-            - tmux
+    
 - markcornick/vim-terraform:
     lazy: 1
     autoload:
         filetypes:
             - terraforma
+	    - terraform
 - j605/vim-vala:
     lazy: 1
     autoload:
@@ -859,6 +899,10 @@
 # - vim-ruby/vim-ruby:
 # this makes opening up ruby files super slow. behaves like filetype is set twice?
 # - tpope/vim-bundler:
+# Moved to lexima.vim
+# - tpope/vim-endwise:
+# Use devdocs.io and devdocs.vim
+# - rizzatti/dash.vim:
 # }}}
 
 # vim: iskeyword+=/,.,- foldmethod=marker

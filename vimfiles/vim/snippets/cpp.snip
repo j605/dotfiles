@@ -24,6 +24,15 @@ abbr for (int) {}
 		${0:TARGET}
 	}
 
+snippet     class
+options     head
+	class ${1:ClassName} {
+		private:${2:#:privates}
+		public:${3:#:public members}
+			$1(${4:args}) {
+			}
+	};
+
 snippet cls
 	class ${1:ClassName} {
 		private:
@@ -43,3 +52,10 @@ snippet case
 	case ${1:var}:
 		${2:statements}break;
 		${0:TARGET}
+
+snippet     opover
+abbr        operator overload
+options     head
+	${1:type} operator${2:+}(const $1& lhs, const $1& rhs) {
+		${0}
+	}

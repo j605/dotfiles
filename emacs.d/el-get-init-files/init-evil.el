@@ -11,6 +11,8 @@
 (define-key evil-normal-state-map ",;" 'eval-expression)
 (define-key evil-normal-state-map ",x" 'execute-extended-command)
 
+(define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
+
 ;; for org-mode
 (add-hook 'org-mode-hook
           (lambda ()
@@ -36,6 +38,7 @@
   (kbd "I") 'org-agenda-clock-in
   (kbd "O") 'org-agenda-clock-out
   (kbd "J") 'org-agenda-clock-goto
+  (kbd "r") 'org-agenda-redo
   (kbd "q") 'org-agenda-quit)
 
 ;; esc quits everything (https://github.com/davvil/.emacs.d/blob/master/init.el)

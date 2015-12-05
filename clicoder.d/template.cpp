@@ -36,6 +36,7 @@ typedef long long int LL;
 typedef unsigned long long int ULL;
 typedef vector<int> VI;
 typedef vector<VI> VVI;
+typedef vector<VVI> VVVI;
 typedef vector<LL> VLL;
 typedef vector<VLL> VVLL;
 typedef vector<ULL> VULL;
@@ -46,10 +47,14 @@ typedef vector<bool> VB;
 typedef vector<VB> VVB;
 typedef vector<char> VC;
 typedef vector<VC> VVC;
+typedef vector<VVC> VVVC;
 typedef vector<string> VS;
 typedef vector<VS> VVS;
 typedef pair<int, int> PII;
 typedef complex<int> P;
+#define PQ(type) priority_queue<type>
+// priority queue reverse
+#define PQR(type) priority_queue< type, vector<type>, greater<type> >
 // }}}
 // macros & inline functions {{{
 // syntax sugars {{{
@@ -58,6 +63,8 @@ typedef complex<int> P;
 #define REP(i, n) FOR(i, 0, n)
 #define REPI(i, n) FORI(i, 0, n)
 #define OPOVER(_op, _type) inline bool operator _op (const _type &t) const
+#define ASSIGN_MAX(var, val) ((var) = max((var), (val)))
+#define ASSIGN_MIN(var, val) ((var) = min((var), (val)))
 // }}}
 // conversion {{{
 inline int toInt(string s) { int v; istringstream sin(s); sin>>v; return v; }
@@ -101,10 +108,12 @@ inline int MAKE_MASK(ULL upper, ULL lower) { assert(lower < 64 && upper < 64 && 
 #define darr2(a) if (opt_debug) { FOR(__i, 0, (arrsz(a))){ darr( (a)[__i] ); } }
 #define WAIT() if (opt_debug) { string _wait_; cerr << "(hit return to continue)" << endl; getline(cin, _wait_); }
 #define dump(x) if (opt_debug) { cerr << " [L" << __LINE__ << "] " << #x << " = " << (x) << endl; }
+// dump vector elements in [s, e)
+#define dumpv(v, s, e) if (opt_debug) { cerr << " [L" << __LINE__ << "] " << #v << " = "; FOR(__i, s, e) { cerr << v[__i] << "\t"; } cerr << endl; }
 #define dumpl(x) if (opt_debug) { cerr << " [L" << __LINE__ << "] " << #x << endl << (x) << endl; }
 #define dumpf() if (opt_debug) { cerr << __PRETTY_FUNCTION__ << endl; }
 #define where() if (opt_debug) { cerr << __FILE__ << ": " << __PRETTY_FUNCTION__ << " [L: " << __LINE__ << "]" << endl; }
-#define show_bits(b, s) if(opt_debug) { REP(i, s) { cerr << BITOF(b, s-1-i); if(i%4 == 3) cerr << ' '; } cerr << endl; }
+#define dumpb(bit, digits) if (opt_debug) { cerr << " [L" << __LINE__ << "] " << #bit << " = "; for(int __i = digits - 1; __i >= 0; __i--) { cerr << static_cast<bool>(bit & (1 << __i)); if (__i % 4 == 0) { cerr << " "; } } cerr << endl; }
 
 // ostreams {{{
 // complex
@@ -128,6 +137,17 @@ template<typename T> ostream& operator<<(ostream& s, const vector< vector<T> >& 
 	REP (i, len) {
 		s << d[i] << endl;
 	}
+	return s;
+}
+
+// set
+template<typename T> ostream& operator<<(ostream& s, const set<T>& v) {
+	s << "{ ";
+	for (typeof(v.begin()) itr = v.begin(); itr != v.end(); ++itr) {
+		if (itr != v.begin()) { s << ", "; }
+		s << (*itr);
+	}
+	s << " }";
 	return s;
 }
 
@@ -155,11 +175,21 @@ inline string join(VS s, string j) { string t; REP(i, s.size()) { t += s[i] + j;
 #define X imag()
 // }}}
 // 2 dimentional array {{{
+enum { UP, RIGHT, DOWN, LEFT, UP_RIGHT, DOWN_RIGHT, DOWN_LEFT, UP_LEFT };
+int dy4[] = { -1, 0, 1, 0 };
+int dx4[] = { 0, 1, 0, -1 };
 P dydx4[4] = { P(-1, 0), P(0, 1), P(1, 0), P(0, -1) };
 P dydx8[8] = { P(-1, 0), P(0, 1), P(1, 0), P(0, -1), P(-1, 1), P(1, 1), P(1, -1), P(-1, -1) };
-int g_height, g_width;
-bool in_field(P p) {
-	return (0 <= p.Y && p.Y < g_height) && (0 <= p.X && p.X < g_width);
+bool in_field(int H, int W, P p) {
+	return (0 <= p.Y && p.Y < H) && (0 <= p.X && p.X < W);
+}
+// }}}
+// input and output {{{
+inline void input(string filename) {
+	freopen(filename.c_str(), "r", stdin);
+}
+inline void output(string filename) {
+	freopen(filename.c_str(), "w", stdout);
 }
 // }}}
 // input and output {{{
@@ -171,6 +201,62 @@ inline void output(string filename) {
 }
 // }}}
 // }}}
+
+// Header under development {{{
+
+int LCM(int a, int b) {
+	// FIXME
+	return a * b;
+}
+
+// Fraction class {{{
+// ref: http://martin-thoma.com/fractions-in-cpp/
+class Fraction {
+	public:
+		ULL numerator;
+		ULL denominator;
+		Fraction(ULL _numerator, ULL _denominator) {
+			assert(_denominator > 0);
+			numerator = _numerator;
+			denominator = _denominator;
+		};
+
+		Fraction operator*(const ULL rhs) {
+			return Fraction(this->numerator * rhs, this->denominator);
+		};
+
+		Fraction operator*(const Fraction& rhs) {
+			return Fraction(this->numerator * rhs.numerator, this->denominator * rhs.denominator);
+		}
+
+		Fraction operator+(const Fraction& rhs) {
+			ULL lcm = LCM(this->denominator, rhs.denominator);
+			ULL numer_lhs = this->numerator * (this->denominator / lcm);
+			ULL numer_rhs = rhs.numerator * (rhs.numerator / lcm);
+			return Fraction(numer_lhs + numer_rhs, lcm);
+		}
+
+		Fraction& operator+=(const Fraction& rhs) {
+			Fraction result = (*this) + rhs;
+			this->numerator = result.numerator;
+			this->denominator = result.denominator;
+			return *this;
+		}
+};
+
+std::ostream& operator<<(std::ostream &s, const Fraction &a) {
+	if (a.denominator == 1) {
+		s << a.numerator;
+	} else {
+		s << a.numerator << "/" << a.denominator;
+	}
+	return s;
+}
+
+// }}}
+
+// }}}
+
 bool opt_debug = false;
 
 int main(int argc, char** argv) {
@@ -188,8 +274,9 @@ int main(int argc, char** argv) {
 	}
 	// }}}
 
-	input("./inputs/0.txt");
-	// output("./outputs/0.txt");
+	// opt_debug = true;
+	// input("./inputs/0");
+	// output("./outputs/0");
 
 	<`0`>
 

@@ -31,7 +31,8 @@ function executable() {
 # ==================================================
 # Boxen
 # ==================================================
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+# Stopped using boxen since it made zsh startup time significantly slow
+# [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 # ==================================================
 
 # ==================================================
@@ -50,6 +51,14 @@ if [[ ! -o NORCS ]]; then
 		source $HOME/dotfiles/zshfiles/envfiles/$f
 	done
 fi
+
+# clean $path
+# http://blog.n-z.jp/blog/2013-12-12-zsh-cleanup-path.html
+path=(
+	# allow directories only (-/)
+	# reject world-writable directories (^W)
+	${^path}(N-/^W)
+)
 
 # Load local zshenv
 [ -f $HOME/.zshenv.local ] && source $HOME/.zshenv.local

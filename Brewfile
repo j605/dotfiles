@@ -1,7 +1,7 @@
 tap 'peco/peco'
 brew 'tig'
 brew 'vim', args: ['with-lua']
-brew 'emacs'
+brew 'emacs', args: ['with-d-bus']
 brew 'zsh'
 brew 'tmux'
 brew 'reattach-to-user-namespace'
@@ -24,6 +24,7 @@ brew 'go'
 brew 'automake'
 brew 'aspell'
 brew 'cheat'
+brew 'python'
 
 brew 'caskroom/cask/brew-cask'
 cask 'iterm2'
@@ -34,5 +35,4 @@ cask 'alfred'
 cask 'google-japanese-ime'
 cask 'dash'
 cask 'lastpass'
-cask 'clipmenu'
 cask 'karabiner'
