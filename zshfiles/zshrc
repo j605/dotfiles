@@ -10,8 +10,13 @@ compinit
 # Jump into tmux session automatically {{{
 export AUTO_TMUX_SESSION_NAME="j605"
 if [ -z $TMUX ]; then
-	# assume $SHELL is zsh
-	tmux new-session -As "$AUTO_TMUX_SESSION_NAME" "$SHELL"
+	# assume $SHELL is zsh, and open org mode automatically
+	# (and set window name 'org' so that it can be used by select-window)
+	tmux attach-session -t "$AUTO_TMUX_SESSION_NAME"
+	if [ $? -ne 0 ]; then
+		# Init new tmux session (play around with some tmux scripting)
+		tmux new-session -s "$AUTO_TMUX_SESSION_NAME" "$SHELL"
+	fi
 	# exit
 	# Not exit in order to use shell outside of tmux on occasion...
 fi
@@ -21,7 +26,7 @@ fi
 # fpath {{{
 # ==================================================
 # TODO: why here? it works iff this source is before sourcing oh-my-zsh.sh
-# fpath+=($GOPATH/src/github.com/motemen/ghq/zsh)
+#fpath+=($GOPATH/src/github.com/motemen/ghq/zsh)
 # }}}
 # ==================================================
 
