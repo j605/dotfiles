@@ -834,8 +834,8 @@
     lazy: 1
     autoload:
         filetypes:
-	    - tmux
--jcfaria/Vim-R-plugin:
+            - tmux
+- jcfaria/Vim-R-plugin:
     lazy: 1
     autoload:
         filetypes:
@@ -843,13 +843,12 @@
             - rout
             - rrst
             - rmd
-    
 - markcornick/vim-terraform:
     lazy: 1
     autoload:
         filetypes:
             - terraforma
-	    - terraform
+            - terraform
 - j605/vim-vala:
     lazy: 1
     autoload:
