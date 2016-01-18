@@ -14,6 +14,18 @@ local menubar = require("menubar")
 require("volume")
 -- xdg menu
 xdg_menu = require("archmenu")
+-- Gizmoguy's super-easy acpi battery widget
+batterywidget = wibox.widget.textbox()
+batterywidget:set_text(" | Battery | ")
+batterywidgettimer = timer({ timeout = 10})
+batterywidgettimer:connect_signal("timeout",
+  function()
+    fh = assert(io.popen("acpi | cut -d, -f 2,3 -", "r"))
+    batterywidget:set_text(" |" .. fh:read("*l") .. " | ")
+    fh:close()
+  end
+)
+batterywidgettimer:start()
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -222,6 +234,7 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     volume_widget = create_volume_widget()
     right_layout:add(volume_widget)
+    right_layout:add(batterywidget)
     right_layout:add(mykeyboardlayout)
 
     if s == 1 then right_layout:add(wibox.widget.systray()) end
