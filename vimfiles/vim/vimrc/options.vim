@@ -19,7 +19,7 @@ set number
 set relativenumber
 "}}}
 " syntax, highlighting and spelling {{{
-set nohlsearch
+set hlsearch
 set nocursorline
 set colorcolumn=80
 set conceallevel=1
@@ -57,6 +57,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
+filetype plugin indent on
 "}}}
 " folding {{{
 set foldmethod=marker
@@ -70,7 +71,7 @@ set backup
 set backupdir=~/.tmp/vim/backup
 set autoread
 " Vim builtin encryption (http://usevim.com/2013/11/01/vim-encryption/)
-set cryptmethod=blowfish
+" set cryptmethod=blowfish
 "}}}
 " the swap file {{{
 set swapfile

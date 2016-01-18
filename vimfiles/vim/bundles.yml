@@ -46,6 +46,7 @@
         mappings:
             - <Plug>(characterize)
 - Konfekt/FastFold:
+- jamessan/vim-gnupg:
 # }}}
 
 # Coding {{{
@@ -683,6 +684,7 @@
     autoload:
         filetypes:
             - python
+## }}}
 
 ## Vim {{{
 - xolox/vim-reload:
