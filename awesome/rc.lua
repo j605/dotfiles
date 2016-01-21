@@ -14,7 +14,8 @@ local menubar = require("menubar")
 require("volume")
 -- xdg menu
 xdg_menu = require("archmenu")
--- Gizmoguy's super-easy acpi battery widget
+
+-- {{{ Gizmoguy's super-easy acpi battery widget
 batterywidget = wibox.widget.textbox()
 batterywidget:set_text(" | Battery | ")
 batterywidgettimer = timer({ timeout = 10})
@@ -26,6 +27,7 @@ batterywidgettimer:connect_signal("timeout",
   end
 )
 batterywidgettimer:start()
+-- }}}
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -75,7 +77,7 @@ run_once("nm-applet")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/dremora/theme.lua")
+beautiful.init("/usr/share/awesome/themes/powerarrow-darker/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -333,7 +335,9 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86MonBrightnessDown", function ()
         awful.util.spawn("xbacklight -dec 5") end),
     awful.key({ }, "XF86MonBrightnessUp", function ()
-        awful.util.spawn("xbacklight -inc 5") end)
+        awful.util.spawn("xbacklight -inc 5") end),
+    -- Lock screen
+    awful.key({ modkey }, "F12", function () awful.util.spawn("xlock") end)
 )
 
 clientkeys = awful.util.table.join(
