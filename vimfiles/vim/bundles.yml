@@ -404,7 +404,7 @@
 # }}}
 
 # Visual {{{
-- morhetz/gruvbox:
+- romainl/Apprentice:
 - t9md/vim-quickhl:
 - itchyny/lightline.vim:
 - kshenoy/vim-signature:
