@@ -684,6 +684,11 @@
     autoload:
         filetypes:
             - python
+- klen/python-mode:
+    lazy: 1
+    autoload:
+        filetypes:
+            - python
 ## }}}
 
 ## Vim {{{
