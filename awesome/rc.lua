@@ -80,7 +80,7 @@ run_once("nm-applet")
 beautiful.init("/usr/share/awesome/themes/powerarrow-darker/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "st"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
 
