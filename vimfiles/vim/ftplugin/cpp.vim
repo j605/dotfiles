@@ -1,6 +1,10 @@
 inoremap <silent> <buffer> <Leader><C-l> <Space>>><Space>
 inoremap <silent> <buffer> <Leader><C-h> <Space><<<Space>
 
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 " ==================================================
 " Make"prg"file
 " ==================================================
