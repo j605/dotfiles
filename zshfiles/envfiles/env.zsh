@@ -6,6 +6,7 @@ export WIDGETDIR=$DOTDIR/zshfiles/rcfiles/widgets
 export TERM=xterm-256color
 export EDITOR=vim
 export GIT_EDITOR=vim
+export MATLAB_JAVA=/usr/lib/jvm/java-7-openjdk/jre
 
 # Locale
 export LANG=en_IN.UTF-8
