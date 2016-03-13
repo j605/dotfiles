@@ -73,6 +73,7 @@ end
 
 run_once("dropbox")
 run_once("nm-applet")
+run_once("variety")
 -- }}}
 
 -- {{{ Variable definitions
