@@ -71,6 +71,7 @@ function run_once(prg,arg_string,pname,screen)
    end
 end
 
+run_once("compton")
 run_once("dropbox")
 run_once("nm-applet")
 run_once("variety")
@@ -126,7 +127,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "web", "terminal", "files", "media" }, s, awful.layout.layouts[1])
+    tags[s] = awful.tag({ "web", "terminal", "files", "media", "more_stuff" }, s, awful.layout.layouts[1])
 end
 -- }}}
 
