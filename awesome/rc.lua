@@ -74,7 +74,6 @@ end
 run_once("compton")
 run_once("dropbox")
 run_once("nm-applet")
-run_once("variety")
 -- }}}
 
 -- {{{ Variable definitions
@@ -333,13 +332,19 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioRaiseVolume", function () inc_volume(volume_widget) end),
     awful.key({ }, "XF86AudioLowerVolume", function () dec_volume(volume_widget) end),
     awful.key({ }, "XF86AudioMute", function() mute_volume(volume_widget) end),
+    awful.key({ }, "XF86AudioPlay", function ()
+        awful.util.spawn("playerctl play-pause") end),
+    awful.key({ }, "XF86AudioPrev", function ()
+        awful.util.spawn("playerctl previous") end),
+    awful.key({ }, "XF86AudioNext", function ()
+        awful.util.spawn("playerctl next") end),
      -- Brightness
     awful.key({ }, "XF86MonBrightnessDown", function ()
         awful.util.spawn("xbacklight -dec 5") end),
     awful.key({ }, "XF86MonBrightnessUp", function ()
         awful.util.spawn("xbacklight -inc 5") end),
     -- Lock screen
-    awful.key({ modkey }, "F12", function () awful.util.spawn("xlock") end)
+    awful.key({ modkey }, "F12", function () awful.util.spawn("slock") end)
 )
 
 clientkeys = awful.util.table.join(
