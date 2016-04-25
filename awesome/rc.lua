@@ -76,6 +76,7 @@ end
 run_once("compton")
 run_once("dropbox")
 run_once("nm-applet")
+run_once("rescuetime")
 -- }}}
 
 -- {{{ Variable definitions
@@ -115,8 +116,8 @@ awful.layout.layouts = {
 }
 
 -- Transparency of notifications
-naughty.config.presets.normal.opacity = 0.6
-naughty.config.presets.low.opacity = 0.4
+naughty.config.presets.normal.opacity = 0.8
+naughty.config.presets.low.opacity = 0.8
 naughty.config.presets.critical.opacity = 0.8
 -- }}}
 
