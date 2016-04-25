@@ -37,9 +37,9 @@
     autoload:
         mappings:
             - <Plug>SpeedDating
-- takac/vim-hardtime:
+# - takac/vim-hardtime:
 - kana/vim-submode:
-- amdt/vim-niji:
+- vim-scripts/vim-niji:
 - tpope/vim-characterize:
     lazy: 1
     autoload:
@@ -51,24 +51,24 @@
 
 # Coding {{{
 - tpope/vim-scriptease:
-- Shougo/neosnippet:
-    lazy: 1
-    autoload:
-        insert: 1
-        commands:
-            - NeoSnippetMakeCache
-            - NeoSnippetEdit
-            - NeoSnippetSource
-            - NeoSnippetClearMarkers
-- Shougo/neosnippet-snippets:
-    lazy: 1
-    autoload:
-        on_source: neosnippet
-- honza/vim-snippets:
-    lazy: 1
-    autoload:
-        function_prefix: vim_snippets
-# - ujihisa/quicklearn:
+# - Shougo/neosnippet:
+    # lazy: 1
+    # autoload:
+        # insert: 1
+        # commands:
+            # - NeoSnippetMakeCache
+            # - NeoSnippetEdit
+            # - NeoSnippetSource
+            # - NeoSnippetClearMarkers
+# - Shougo/neosnippet-snippets:
+    # lazy: 1
+    # autoload:
+        # on_source: neosnippet
+# - honza/vim-snippets:
+    # lazy: 1
+    # autoload:
+        # function_prefix: vim_snippets
+- ujihisa/quicklearn:
 - thinca/vim-qfreplace:
     lazy: 1
     autoload:
@@ -164,6 +164,11 @@
         insert: 1
 
 ## Completion {{{
+# can't use it because of neovim, use deocomplete intead
+# - Shougo/deoplete.nvim:
+    # lazy: 1
+    # autoload:
+        # insert: 1
 - Shougo/neocomplete:
     lazy: 1
     autoload:
