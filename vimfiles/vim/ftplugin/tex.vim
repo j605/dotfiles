@@ -8,10 +8,12 @@ setlocal thesaurus+=~/.vim/resources/thesaurus/mthesaur.txt
 " --------------------------------------------------
 " Vim-LaTeX-Box Settings
 " --------------------------------------------------
-filetype plugin on
 set shellslash
 set grepprg=grep\-nH\$*
-filetype indent on
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 " http://superuser.com/questions/302186/vim-scrolls-very-slow-when-a-line-is-too-long
 set lazyredraw
