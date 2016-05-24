@@ -40,3 +40,6 @@
 
 [include]
 	path = ~/.gitconfig.local
+
+[url "https://aur.archlinux.org/"]
+	insteadOf = aur:
