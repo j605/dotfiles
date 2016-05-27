@@ -35,3 +35,10 @@ augroup vimrc_plugins
 			\| execute 'autocmd FileType' ft 'setlocal spell'
 		\| endfor
 augroup END
+
+augroup pass_files
+	autocmd!
+	autocmd BufEnter,BufRead /dev/shm/*
+		\ setl history=0 nobackup nomodeline noshelltemp noswapfile noundofile
+			\ nowritebackup secure viminfo=""
+augroup END
