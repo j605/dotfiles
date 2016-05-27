@@ -15,6 +15,9 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 require("textvolume")
 -- xdg menu
 xdg_menu = require("archmenu")
+-- powerline
+package.path = package.path .. ';/usr/lib/python3.5/site-packages/powerline/bindings/awesome/?.lua'
+require('powerline')
 
 
 -- {{{ Error handling
@@ -263,7 +266,7 @@ awful.screen.connect_for_each_screen(function(s)
             batterywidget,
             mykeyboardlayout,
             wibox.widget.systray(),
-            mytextclock,
+            powerline_widget,
             mylayoutbox[s],
         },
     }
