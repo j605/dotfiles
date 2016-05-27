@@ -514,6 +514,9 @@
     autoload:
         commands:
             - VimroomToggle
+- xolox/vim-notes:
+    depends:
+        - vim-misc
 # }}}
 
 # Other Utilities {{{
