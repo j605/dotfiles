@@ -825,7 +825,7 @@
     autoload:
         commands:
             - PrevimOpen
-- LaTeX-Box-Team/LaTeX-Box:
+- lervag/vimtex:
     lazy: 1
     autoload:
         filetypes:

@@ -6,7 +6,7 @@ setlocal thesaurus+=~/.vim/resources/thesaurus/mthesaur.txt
 
 
 " --------------------------------------------------
-" Vim-LaTeX-Box Settings
+" Vimtex Settings
 " --------------------------------------------------
 set shellslash
 set grepprg=grep\-nH\$*
@@ -17,8 +17,9 @@ set expandtab
 
 " http://superuser.com/questions/302186/vim-scrolls-very-slow-when-a-line-is-too-long
 set lazyredraw
-set synmaxcol=128
+set synmaxcol=1000
 
 let g:tex_fold_enabled = 1
-let g:LatexBox_latexmk_options="-pdf -shell-escape"
-let g:LatexBox_viewer="evince"
+let g:tex_comment_nospell = 1
+let g:tex_conceal = "abdg"
+let g:vimtex_view_method = "zathura"
