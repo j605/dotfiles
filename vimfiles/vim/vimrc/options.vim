@@ -17,6 +17,9 @@ set list
 set listchars=tab:>\ ,trail:_,extends:>,precedes:<,conceal:#
 set number
 set relativenumber
+if has("gui_running")
+	set guifont=Source\ Code\ Pro\ 9
+endif
 "}}}
 " syntax, highlighting and spelling {{{
 set hlsearch
@@ -24,7 +27,7 @@ set nocursorline
 set colorcolumn=80
 set conceallevel=1
 set concealcursor=inc
-syntax on
+syntax enable
 "}}}
 " multiple windows {{{
 set laststatus=2
@@ -109,10 +112,5 @@ if has('mksession')
 	set viewoptions=cursor,folds
 endif
 "}}}
-if $TERM ==# 'xterm-256color'
-	set t_Co=256
-elseif $TERM ==# 'screen-256color'
-	set t_Co=256
-else
-	set t_Co=16
-endif
+
+set t_Co=256
