@@ -1,5 +1,9 @@
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_force_overwrite_statusline = 0
+set fillchars=vert:│,fold:─
+let g:vimfiler_tree_leaf_icon = "⋮"
+let g:vimfiler_tree_opened_icon = "▼"
+let g:vimfiler_tree_closed_icon = "▷"
 
 augroup vimrc_vimfiler
 	autocmd!
