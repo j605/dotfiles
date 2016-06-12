@@ -66,3 +66,6 @@
 [submodule "submodules/purity"]
 	path = submodules/purity
 	url = git@github.com:therealklanni/purity.git
+[submodule "submodules/LS_COLORS"]
+	path = submodules/LS_COLORS
+	url = git@github.com:trapd00r/LS_COLORS.git
