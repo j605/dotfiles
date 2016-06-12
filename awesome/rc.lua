@@ -1,7 +1,6 @@
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-awful.rules = require("awful.rules")
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
@@ -15,10 +14,6 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 require("textvolume")
 -- xdg menu
 xdg_menu = require("archmenu")
--- powerline
-package.path = package.path .. ';/usr/lib/python3.5/site-packages/powerline/bindings/awesome/?.lua'
-require('powerline')
-
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -76,7 +71,7 @@ function run_once(prg,arg_string,pname,screen)
    end
 end
 
-run_once("compton")
+run_once("compton -bcCGf --no-fading-openclose --backend glx --vsync opengl-swc")
 run_once("dropbox")
 run_once("nm-applet")
 run_once("rescuetime")
@@ -167,7 +162,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock()
+mytextclock = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -266,7 +261,7 @@ awful.screen.connect_for_each_screen(function(s)
             batterywidget,
             mykeyboardlayout,
             wibox.widget.systray(),
-            powerline_widget,
+            mytextclock,
             mylayoutbox[s],
         },
     }
@@ -405,7 +400,8 @@ clientkeys = awful.util.table.join(
         function (c)
             c.fullscreen = not c.fullscreen
             c:raise()
-        end),
+        end,
+        {description = "toggle fullscreen", group = "client"}),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
@@ -531,14 +527,19 @@ awful.rules.rules = {
         }
       }, properties = { floating = true }},
 
-    -- Add titlebars to normal clients and dialogs
+    -- Don't add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false}
     },
 
     -- Set Firefox to always map on the tag named "1" on screen 1.
     { rule = { class = "Firefox" },
-      properties = { screen = 1, tag = "1" } },
+      properties = { screen = 1, tag = "1" }
+    },
+
+    -- Make pidgin appear only on tag "1" on screen 1.
+    { rule = { class = "Pidgin" },
+      properties = { screen = 1, tag = "1" }},
 }
 -- }}}
 
