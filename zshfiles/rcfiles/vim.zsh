@@ -13,6 +13,7 @@ function myvim() {
 }
 
 alias v="myvim"
-alias ev="v ~/dotfiles/vimrc"
-alias ez="v ~/dotfiles/zshrc"
-alias et="v ~/dotfiles/tmux.conf"
+alias ev="v ~/dotfiles/vimfiles/vimrc"
+alias ez="v ~/dotfiles/zshfiles/zshrc"
+alias et="v ~/dotfiles/miscfiles/tmux.conf"
+alias vless="$(pacman -Qql vim-runtime | grep less.sh)"
