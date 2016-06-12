@@ -3,7 +3,6 @@ export DOTDIR=$HOME/dotfiles
 export WIDGETDIR=$DOTDIR/zshfiles/rcfiles/widgets
 
 # Preferences
-export TERM=xterm-256color
 export EDITOR=vim
 export GIT_EDITOR=vim
 export MATLAB_JAVA=/usr/lib/jvm/java-7-openjdk/jre
@@ -22,3 +21,6 @@ export PYTHONIOENCODING=utf-8
 
 # Miscellaneous
 export HTTP_HOME=http://vim.wikia.com/wiki/Special:Random
+export AIRNEWS=http://www.newsonair.com/writereaddata/bulletins/Tiruchirapalli-Tamil-Regional-Bulletins-54970.mp3
+export AIRSANSMORNING=http://www.newsonair.com/writereaddata/bulletins/Sanskrit-NSD-Language-Audio-Bulletins-56978.mp3
+export AIRSANSEVENING=http://www.newsonair.com/writereaddata/bulletins/Sanskrit-NSD-Language-Audio-Bulletins-55570.mp3
