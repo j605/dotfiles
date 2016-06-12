@@ -173,6 +173,7 @@
     lazy: 1
     autoload:
         insert: 1
+- Shougo/neoinclude.vim:
 - ujihisa/neco-look:
     lazy: 1
     autoload:
@@ -300,14 +301,14 @@
     autoload:
         unite_sources:
             - rake
-- Genki-S/unite-tag:
-    rev: my_hacks
-    lazy: 1
-    autoload:
-        unite_sources:
-            - tag
-            - tag/file
-            - tag/include
+# lazy loading fails, don't know why
+- tsukkee/unite-tag:
+    # lazy: 1
+    # autoload:
+        # unite_sources:
+            # - tag
+            # - tag/file
+            # - tag/include
 - yuku-t/unite-git:
     lazy: 1
     autoload:
