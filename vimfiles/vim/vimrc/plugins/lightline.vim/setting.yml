@@ -34,6 +34,6 @@ component_function:
   gitgutter: MyGitGutter
 component_type:
   qfstatus: error
-colorscheme: solarized
+colorscheme: powerline
 component_expand:
   qfstatus: MyQfstatus
