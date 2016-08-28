@@ -1,5 +1,5 @@
 auto-reload         yes
-browser             "elinks %u"
+browser             "chromium %u"
 download-full-page  yes
 notify-screen       yes
 feed-sort-order     title
