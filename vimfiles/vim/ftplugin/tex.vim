@@ -23,3 +23,4 @@ let g:tex_comment_nospell = 1
 let g:tex_conceal = "abdg"
 let g:vimtex_view_method = "zathura"
 let g:vimtex_fold_enabled = 1
+let g:vimtex_latexmk_build_dir = './build'
