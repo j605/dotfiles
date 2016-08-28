@@ -1,0 +1,9 @@
+#! /usr/bin/bash
+
+word="$(xclip -o)"
+meaning="$(sdcv --non-interactive ${word})"
+
+zenity --width=800 --height=600  \
+	     --title "Meaning for ${word}" \
+			 --text-info \
+			 --filename=<(echo "$meaning") 2>/dev/null
