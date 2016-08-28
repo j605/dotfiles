@@ -6,6 +6,7 @@ export WIDGETDIR=$DOTDIR/zshfiles/rcfiles/widgets
 export EDITOR=vim
 export GIT_EDITOR=vim
 export MATLAB_JAVA=/usr/lib/jvm/java-7-openjdk/jre
+export FT2_SUBPIXEL_HINTING=1
 
 # Locale
 export LANG=en_IN.UTF-8
