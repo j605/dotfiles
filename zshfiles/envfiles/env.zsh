@@ -6,7 +6,6 @@ export WIDGETDIR=$DOTDIR/zshfiles/rcfiles/widgets
 export EDITOR=vim
 export GIT_EDITOR=vim
 export MATLAB_JAVA=/usr/lib/jvm/java-7-openjdk/jre
-export FT2_SUBPIXEL_HINTING=1
 
 # Locale
 export LANG=en_IN.UTF-8
@@ -22,6 +21,7 @@ export PYTHONIOENCODING=utf-8
 
 # Miscellaneous
 export HTTP_HOME=http://vim.wikia.com/wiki/Special:Random
-export AIRNEWS=http://www.newsonair.com/writereaddata/bulletins/Tiruchirapalli-Tamil-Regional-Bulletins-54970.mp3
+export AIRCHENNAIMORNING=http://newsonair.com/writereaddata/bulletins/Chennai-Tamil-Regional-Bulletins-54524.mp3
+export AIRCHENNAIEVENING=http://newsonair.com/writereaddata/bulletins/Chennai-Tamil-Regional-Bulletins-54498.mp3
 export AIRSANSMORNING=http://www.newsonair.com/writereaddata/bulletins/Sanskrit-NSD-Language-Audio-Bulletins-56978.mp3
 export AIRSANSEVENING=http://www.newsonair.com/writereaddata/bulletins/Sanskrit-NSD-Language-Audio-Bulletins-55570.mp3
