@@ -58,15 +58,16 @@ function run_once(prg,arg_string,pname,screen)
    end
 end
 
-run_once("compton -bcCGf --no-fading-openclose --backend glx --vsync opengl-swc")
-run_once("dropbox")
+run_once("compton")
+run_once("redshift")
+run_once("vattery")
 run_once("nm-applet")
 -- }}}
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(awful.util.get_themes_dir() .. "powerarrow-darker/theme.lua")
-beautiful.wallpaper = "/home/jagan/Pictures/Wallpapers/time_to_celebrate__by_ryky-d9krr3k.jpg"
+beautiful.wallpaper = "/home/jagan/Pictures/grave of the fireflies.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "st"
@@ -370,24 +371,24 @@ globalkeys = awful.util.table.join(
               {description = "show the menubar", group = "launcher"}),
     -- Media
     awful.key({ }, "XF86AudioRaiseVolume", function ()
-              awful.util.spawn("amixer set Master 2%+", false) end),
+              awful.spawn("amixer set Master 2%+", false) end),
     awful.key({ }, "XF86AudioLowerVolume", function ()
-              awful.util.spawn("amixer set Master 2%-", false) end),
+              awful.spawn("amixer set Master 2%-", false) end),
     awful.key({ }, "XF86AudioMute", function()
-              awful.util.spawn("amixer set Master toggle", false) end),
+              awful.spawn("amixer set Master toggle", false) end),
     awful.key({ }, "XF86AudioPlay", function ()
-        awful.util.spawn("playerctl play-pause", false) end),
+        awful.spawn("playerctl play-pause", false) end),
     awful.key({ }, "XF86AudioPrev", function ()
-        awful.util.spawn("playerctl previous", false) end),
+        awful.spawn("playerctl previous", false) end),
     awful.key({ }, "XF86AudioNext", function ()
-        awful.util.spawn("playerctl next", false) end),
+        awful.spawn("playerctl next", false) end),
      -- Brightness
     awful.key({ }, "XF86MonBrightnessDown", function ()
-        awful.util.spawn("xbacklight -dec 5", false) end),
+        awful.spawn("xbacklight -dec 5", false) end),
     awful.key({ }, "XF86MonBrightnessUp", function ()
-        awful.util.spawn("xbacklight -inc 5", false) end),
+        awful.spawn("xbacklight -inc 5", false) end),
     -- Lock screen
-    awful.key({ modkey }, "F12", function () awful.util.spawn("slock") end)
+    awful.key({ }, "XF86HomePage", function () awful.spawn("slock") end)
 )
 
 clientkeys = awful.util.table.join(
@@ -494,7 +495,7 @@ awful.rules.rules = {
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen,
-                     size_hints_honor = false
+                     size_hints_honor = true
      }
     },
 
@@ -512,6 +513,7 @@ awful.rules.rules = {
           "Sxiv",
           "Wpa_gui",
           "pinentry",
+          "albert",
           "veromix",
           "xtightvncviewer"},
 
@@ -536,13 +538,16 @@ awful.rules.rules = {
 
     -- Do the same for chromium
     -- FIXME: class name changes across distributions, check with xprop.
-    { rule = { class = "chromium" },
+    { rule_any = { class = { "chromium", "Google-chrome" } },
       properties = { screen = 1, tag = "1" }
     },
 
     -- Make pidgin appear only on tag "1" on screen 1.
     { rule = { class = "Pidgin" },
       properties = { screen = 1, tag = "1" }},
+
+    { rule_any = { class = { "st-256color", "URxvt" } },
+      properties = { size_hints_honor = false }},
 }
 -- }}}
 
