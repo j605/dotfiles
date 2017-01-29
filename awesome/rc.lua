@@ -384,9 +384,9 @@ globalkeys = awful.util.table.join(
         awful.spawn("playerctl next", false) end),
      -- Brightness
     awful.key({ }, "XF86MonBrightnessDown", function ()
-        awful.spawn("xbacklight -dec 5", false) end),
+        awful.spawn("xbacklight -dec 2", false) end),
     awful.key({ }, "XF86MonBrightnessUp", function ()
-        awful.spawn("xbacklight -inc 5", false) end),
+        awful.spawn("xbacklight -inc 2", false) end),
     -- Lock screen
     awful.key({ }, "XF86HomePage", function () awful.spawn("slock") end)
 )
