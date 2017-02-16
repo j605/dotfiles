@@ -38,9 +38,6 @@ do
 end
 -- }}}
 
---- Enable luajit
-pcall(function() jit.on() end)
-
 -- {{{ Autostart applications
 function run_once(prg,arg_string,pname,screen)
    if not prg then
@@ -59,7 +56,6 @@ function run_once(prg,arg_string,pname,screen)
 end
 
 run_once("compton")
-run_once("redshift")
 run_once("vattery")
 run_once("nm-applet")
 -- }}}
