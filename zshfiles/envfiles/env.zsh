@@ -5,7 +5,7 @@ export WIDGETDIR=$DOTDIR/zshfiles/rcfiles/widgets
 # Preferences
 export EDITOR=vim
 export GIT_EDITOR=vim
-export MATLAB_JAVA=/usr/lib/jvm/java-7-openjdk/jre
+export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
 
 # Locale
 export LANG=en_IN.UTF-8
