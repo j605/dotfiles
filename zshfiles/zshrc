@@ -42,7 +42,7 @@ eval "$(dircolors -b $DOTDIR/submodules/LS_COLORS/LS_COLORS)"
 ZSH=$DOTDIR/submodules/oh-my-zsh
 
 # Have an empty string to manage theme manually
-ZSH_THEME="blinks"
+ZSH_THEME="sunaku"
 
 # make red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -91,6 +91,7 @@ rcfiles=(
 	cdd.zsh
 	go.zsh
 	docker.zsh
+  mpv.zsh
 )
 for f in $rcfiles
 do
@@ -153,22 +154,6 @@ DISABLE_AUTO_TITLE=true
 
 # Profile zsh startup time
 zprof > ~/.tmp/profiling/zsh/`date +%Y-%m-%d_%H:%M:%S`
-
-# ==================================================
-# get-shit-done {{{
-# ==================================================
-# check if work mode has been set
-hosts_file="/etc/hosts"
-start_token="## start-gsd"
-end_token="## end-gsd"
-if ! grep $start_token $hosts_file &> /dev/null; then
-	if ! grep $end_token $hosts_file &> /dev/null; then
-		echo "Let's get shit done!" | toilet --font emboss
-		# get-shit-done work
-	fi
-fi
-# }}}
-# ==================================================
 
 # clean $path
 # http://blog.n-z.jp/blog/2013-12-12-zsh-cleanup-path.html

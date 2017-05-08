@@ -45,6 +45,7 @@ if [[ ! -o NORCS ]]; then
 		path.zsh
 		ruby.zsh
 		go.zsh
+    qt.zsh
 	)
 	for f in $envfiles
 	do
