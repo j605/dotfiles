@@ -55,7 +55,7 @@ function run_once(prg,arg_string,pname,screen)
    end
 end
 
-run_once("compton")
+-- run_once("compton")
 run_once("vattery")
 run_once("nm-applet")
 -- }}}
@@ -379,12 +379,16 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioNext", function ()
         awful.spawn("playerctl next", false) end),
      -- Brightness
-    awful.key({ }, "XF86MonBrightnessDown", function ()
-        awful.spawn("xbacklight -dec 2", false) end),
-    awful.key({ }, "XF86MonBrightnessUp", function ()
-        awful.spawn("xbacklight -inc 2", false) end),
+    -- awful.key({ }, "XF86MonBrightnessDown", function ()
+        -- awful.spawn("xbacklight -dec 2", false) end),
+    -- awful.key({ }, "XF86MonBrightnessUp", function ()
+        -- awful.spawn("xbacklight -inc 2", false) end),
     -- Lock screen
-    awful.key({ }, "XF86HomePage", function () awful.spawn("slock") end)
+    awful.key({ }, "XF86HomePage", function () awful.spawn("slock") end),
+    -- Screenshot using maim
+    awful.key({ }, "Print", function()
+        awful.spawn([[ sh -c 'maim -s "$HOME/Pictures/Screenshot from $(date +%F\ %T)".png'
+        ]]) end)
 )
 
 clientkeys = awful.util.table.join(
@@ -544,6 +548,10 @@ awful.rules.rules = {
 
     { rule_any = { class = { "st-256color", "URxvt" } },
       properties = { size_hints_honor = false }},
+
+    -- FIXME: Fix a problem where mpv has borders in fullscreen
+    { rule_any = { class = { "mpv" } },
+      properties = { border_width = 0 } },
 }
 -- }}}
 
