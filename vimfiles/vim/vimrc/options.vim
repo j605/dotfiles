@@ -44,7 +44,7 @@ set mouse=a
 "}}}
 " messages and info {{{
 set showcmd
-set noshowmode
+set showmode
 "}}}
 " selecting text {{{
 "}}}
