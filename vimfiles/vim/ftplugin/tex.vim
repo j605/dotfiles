@@ -9,7 +9,6 @@ setlocal thesaurus+=~/.vim/resources/thesaurus/mthesaur.txt
 " Vimtex Settings
 " --------------------------------------------------
 set shellslash
-set grepprg=grep\-nH\$*
 
 set tabstop=4
 set shiftwidth=4
@@ -24,3 +23,4 @@ let g:tex_conceal = "abdg"
 let g:vimtex_view_method = "zathura"
 let g:vimtex_fold_enabled = 1
 let g:vimtex_latexmk_build_dir = './build'
+let g:vimtex_latexmk_options = '-pdf -verbose -file-line-error -synctex=1 -interaction=nonstopmode -shell-escape --enable-write18'
