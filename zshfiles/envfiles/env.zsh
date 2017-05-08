@@ -7,9 +7,6 @@ export EDITOR=vim
 export GIT_EDITOR=vim
 export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
 
-# Locale
-export LANG=en_IN.UTF-8
-
 # GOLANG
 export GOPATH=$HOME/go
 
