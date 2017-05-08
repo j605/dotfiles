@@ -1,2 +1,2 @@
-alias -g mpi="mpv --profile=image"
-alias -g mpa="mpv --profile=dontshowimage"
+alias mpi="mpv --profile=image"
+alias mpa="mpv --profile=dontshowimage"
