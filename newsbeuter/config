@@ -1,11 +1,12 @@
 auto-reload         yes
-browser             "chromium %u"
+browser             "elinks %u"
 download-full-page  yes
 notify-screen       yes
 feed-sort-order     title
 download-path       "~/Podcasts/%n"
 max-downloads       3
 player              "mpv"
+max-items           100
 
 include "~/.config/newsbeuter/color"
 
