@@ -548,10 +548,6 @@ awful.rules.rules = {
 
     { rule_any = { class = { "st-256color", "URxvt" } },
       properties = { size_hints_honor = false }},
-
-    -- FIXME: Fix a problem where mpv has borders in fullscreen
-    { rule_any = { class = { "mpv" } },
-      properties = { border_width = 0 } },
 }
 -- }}}
 
