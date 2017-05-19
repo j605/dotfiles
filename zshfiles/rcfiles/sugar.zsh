@@ -24,6 +24,9 @@ alias pass="EDITOR=nano pass"
 # use radeon only when necessary
 alias radeon="DRI_PRIME=1 VDPAU_DRIVER=r600 LIBVA_DRIVER_NAME=vdpau"
 
+# use Tamil if needed
+alias tamil="LANG=ta_IN.UTF-8 LC_ALL=ta_IN.UTF-8"
+
 function mkcd () {
 	mkdir -p "$@" && eval cd "\"\$$#\""
 }
