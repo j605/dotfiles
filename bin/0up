@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+
+from entrypoint2 import entrypoint
+import requests, notify2, os, time, sys, pyperclip
+from requests_toolbelt import (MultipartEncoder, MultipartEncoderMonitor)
+from humanize import naturalsize
+
+rurl = "https://0x0.st"
+
+def nsize(v):
+    return naturalsize(v, binary=True, format="%4.1f")
+
+def get_meter(n, total, time):
+    def fmt_intv(t):
+        mins, s = divmod(int(t), 60)
+        h, m = divmod(mins, 60)
+
+        if h:
+            return "{}:{:02d}:{:02d}".format(h, m, s)
+        else:
+            return "{:02d}:{:02d}".format(m, s)
+
+    return { "cur" : n,
+             "total" : total,
+             "rate" : n / time if time else 0,
+             "eta" : fmt_intv(time / n * (total-n)) if n else "?",
+             "perc" : (float(n) / total) * 100}
+
+def mkcb(notify, fname):
+    global lptime
+    stime = lptime = time.time()
+
+    def prog_cb(encoder):
+        global lptime
+        ctime = time.time()
+
+        if ctime - lptime >= 1:
+            lptime = ctime
+            m = get_meter(encoder.bytes_read, encoder.len, ctime-stime)
+
+            fmt = "{:3.0f}% {} / {} (ETA: {}, {}/s)"
+            print(fmt.format(m["perc"], nsize(m["cur"]), nsize(m["total"]),
+                             m["eta"], nsize(m["rate"])), file=sys.stderr)
+
+            if notify:
+                fmt = "{} / {} (ETA: {}, {}/s)"
+                msg = fmt.format(nsize(m["cur"]), nsize(m["total"]), m["eta"],
+                                 nsize(m["rate"]))
+
+                n = notify2.Notification("Uploading {}".format(fname), msg)
+                n.set_hint_int32("value", int(m["perc"]))
+                n.set_urgency(notify2.URGENCY_LOW)
+                n.id = 1
+                n.show()
+
+    return prog_cb
+
+@entrypoint
+def main(file=None, url=None, notify=True, clipboard=True, paste=False):
+    if notify:
+        notify2.init("0up")
+
+    response = None
+
+    if file:
+        if file.startswith("http://") or file.startswith("https://"):
+            r = requests.post(rurl, data={"url": file})
+            response = r.text.strip()
+        else:
+            fname = os.path.basename(file)
+            files = { "file" : (fname, open(file, "rb")) }
+            m = MultipartEncoder(fields=files)
+            mon = MultipartEncoderMonitor(m, mkcb(notify, fname))
+            headers = { "Content-Type" : mon.content_type }
+            r = requests.post(rurl, data=mon, headers=headers)
+            response = r.text.strip()
+    elif url:
+        r = requests.post(rurl, data={"shorten": url})
+        response = r.text.strip()
+    elif paste:
+        fname = "clipboard.txt"
+        files = { "file" : (fname, pyperclip.paste()) }
+        #r = requests.post(rurl, data=files)
+        m = MultipartEncoder(fields=files)
+        mon = MultipartEncoderMonitor(m, mkcb(notify, fname))
+        headers = { "Content-Type" : mon.content_type }
+        r = requests.post(rurl, data=mon, headers=headers)
+        response = r.text.strip()
+
+    if response:
+        print(response)
+
+        if notify:
+            n = notify2.Notification("Upload finished", response)
+            n.set_urgency(notify2.URGENCY_NORMAL)
+            n.id = 1
+            n.show()
+
+        if clipboard:
+            if sys.platform == 'linux':
+                pyperclip.set_clipboard('xclip')
+            pyperclip.copy(response)
