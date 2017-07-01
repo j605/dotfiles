@@ -55,9 +55,7 @@ function run_once(prg,arg_string,pname,screen)
    end
 end
 
--- run_once("compton")
 run_once("vattery")
-run_once("nm-applet")
 -- }}}
 
 -- {{{ Variable definitions
@@ -377,17 +375,14 @@ globalkeys = gears.table.join(
         awful.spawn("playerctl previous", false) end),
     awful.key({ }, "XF86AudioNext", function ()
         awful.spawn("playerctl next", false) end),
-     -- Brightness
-    -- awful.key({ }, "XF86MonBrightnessDown", function ()
-        -- awful.spawn("xbacklight -dec 2", false) end),
-    -- awful.key({ }, "XF86MonBrightnessUp", function ()
-        -- awful.spawn("xbacklight -inc 2", false) end),
-    -- Lock screen
+     -- Lock screen
     awful.key({ }, "XF86HomePage", function () awful.spawn("slock") end),
     -- Screenshot using maim
     awful.key({ }, "Print", function()
         awful.spawn([[ sh -c 'maim -s "$HOME/Pictures/Screenshot from $(date +%F\ %T)".png'
-        ]]) end)
+        ]]) end),
+    awful.key({ modkey }, "e", function() awful.spawn("passmenu") end,
+              {description = "run passmenu", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -557,7 +552,7 @@ awful.rules.rules = {
     { rule = { class = "Pidgin" },
       properties = { screen = 1, tag = "1" }},
 
-    { rule_any = { class = { "st-256color", "URxvt" } },
+    { rule_any = { class = { "st-256color", "xterm" } },
       properties = { size_hints_honor = false }},
 }
 -- }}}
