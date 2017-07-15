@@ -537,20 +537,12 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = false}
     },
 
-    -- Set Firefox to always map on the tag named "1" on screen 1.
-    { rule = { class = "Firefox" },
-      properties = { screen = 1, tag = "1" }
+    -- Make some apps to always open on the tag named "1" on screen 1.
+    { rule_any = { class = { "Firefox", "chromium", "Google-chrome", "Corebird",
+                             "Pidgin" }
+                 },
+    properties = { screen = 1, tag = "1" }
     },
-
-    -- Do the same for chromium
-    -- FIXME: class name changes across distributions, check with xprop.
-    { rule_any = { class = { "chromium", "Google-chrome" } },
-      properties = { screen = 1, tag = "1" }
-    },
-
-    -- Make pidgin appear only on tag "1" on screen 1.
-    { rule = { class = "Pidgin" },
-      properties = { screen = 1, tag = "1" }},
 
     { rule_any = { class = { "st-256color", "xterm" } },
       properties = { size_hints_honor = false }},
