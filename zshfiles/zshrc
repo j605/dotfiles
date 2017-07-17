@@ -48,7 +48,7 @@ ZSH_THEME="sunaku"
 COMPLETION_WAITING_DOTS="true"
 
 # plugins to load from oh-my-zsh/plugins
-plugins=(git git-flow tmux command-not-found rbenv)
+plugins=(git git-flow tmux)
 
 source $ZSH/oh-my-zsh.sh
 
