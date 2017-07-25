@@ -1,7 +1,7 @@
 color background          white   black
 color listnormal          white   black
-color listfocus           black color236 bold
+color listfocus           black color236 reverse
 color listnormal_unread   magenta black
-color listfocus_unread    magenta color233 bold
-color info                yellow  color236 bold
+color listfocus_unread    black color254 reverse
+color info                yellow  color236 reverse bold
 color article             white   black
