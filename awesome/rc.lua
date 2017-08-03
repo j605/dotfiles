@@ -64,7 +64,7 @@ beautiful.init(awful.util.get_themes_dir() .. "powerarrow-darker/theme.lua")
 beautiful.wallpaper = "/usr/share/wallpapers/Next/contents/images/1920x1080.png"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "st"
+terminal = "konsole"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
 
