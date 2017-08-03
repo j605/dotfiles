@@ -147,7 +147,6 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 mytextclock = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
--- @TAGLIST_BUTTON@
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
                     awful.button({ modkey }, 1, function(t)
@@ -165,7 +164,6 @@ local taglist_buttons = gears.table.join(
                     awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
                 )
 
--- @TASKLIST_BUTTON@
 local tasklist_buttons = gears.table.join(
                      awful.button({ }, 1, function (c)
                                               if c == client.focus then
@@ -191,7 +189,6 @@ local tasklist_buttons = gears.table.join(
                                               awful.client.focus.byidx(-1)
                                           end))
 
--- @DOC_WALLPAPER@
 local function set_wallpaper(s)
     -- Wallpaper
     if beautiful.wallpaper then
@@ -207,17 +204,33 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
--- @DOC_FOR_EACH_SCREEN@
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag.add("web", {
+      icon               = "/usr/share/icons/Moka/32x32/apps/firefox.png",
+      layout             = awful.layout.suit.floating,
+      screen             = s,
+      selected           = true,
+    })
+
+    awful.tag.add("remote", {
+      icon               = "/usr/share/icons/Moka/32x32/apps/terminator.png",
+      layout             = awful.layout.suit.fair.horizontal,
+      screen             = s,
+    })
+
+    awful.tag.add("local", {
+      icon               = "/usr/share/icons/Moka/32x32/apps/utilities-terminal.png",
+      layout             = awful.layout.suit.fair.horizontal,
+      screen             = s,
+    })
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
-    -- Create an imagebox widget which will contains an icon indicating which layout we're using.
+    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(gears.table.join(
@@ -263,6 +276,54 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 
+-- {{{ Tag handling
+local function delete_tag()
+    local t = awful.screen.focused().selected_tag
+    if not t then return end
+    t:delete()
+end
+
+local function add_tag()
+    awful.tag.add("NewTag",{
+       screen = awful.screen.focused(),
+       layout = awful.layout.suit.floating }):view_only()
+end
+
+local function rename_tag()
+    awful.prompt.run {
+        prompt       = "New tag name: ",
+        textbox      = awful.screen.focused().mypromptbox.widget,
+        exe_callback = function(new_name)
+            if not new_name or #new_name == 0 then return end
+
+            local t = awful.screen.focused().selected_tag
+            if t then
+                t.name = new_name
+            end
+        end
+    }
+end
+
+local function move_to_new_tag()
+    local c = client.focus
+    if not c then return end
+
+    local t = awful.tag.add(c.class,{screen= c.screen })
+    c:tags({t})
+    t:view_only()
+end
+
+local function copy_tag()
+    local t = awful.screen.focused().selected_tag
+    if not t then return end
+
+    local clients = t:clients()
+    local t2 = awful.tag.add(t.name, awful.tag.getdata(t))
+    t2:clients(clients)
+    t2:view_only()
+end
+-- }}}
+
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -288,6 +349,18 @@ globalkeys = gears.table.join(
     ),
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
+
+    -- Tag handling
+    awful.key({ modkey,           }, "a", add_tag,
+              {description = "add a tag", group = "tag"}),
+    awful.key({ modkey, "Shift"   }, "a", delete_tag,
+              {description = "delete the current tag", group = "tag"}),
+    awful.key({ modkey, "Control"   }, "a", move_to_new_tag,
+              {description = "add a tag with the focused client", group = "tag"}),
+    awful.key({ modkey, "Mod1"   }, "a", copy_tag,
+              {description = "create a copy of the current tag", group = "tag"}),
+    awful.key({ modkey, "Shift"   }, "r", rename_tag,
+              {description = "rename the current tag", group = "tag"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
@@ -541,7 +614,7 @@ awful.rules.rules = {
     { rule_any = { class = { "Firefox", "chromium", "Google-chrome", "Corebird",
                              "Pidgin" }
                  },
-    properties = { screen = 1, tag = "1" }
+    properties = { screen = 1, tag = "web" }
     },
 
     { rule_any = { class = { "st-256color", "xterm" } },
