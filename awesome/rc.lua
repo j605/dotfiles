@@ -454,7 +454,7 @@ globalkeys = gears.table.join(
     awful.key({ }, "Print", function()
         awful.spawn([[ sh -c 'maim -s "$HOME/Pictures/Screenshot from $(date +%F\ %T)".png'
         ]]) end),
-    awful.key({ modkey }, "e", function() awful.spawn("passmenu") end,
+    awful.key({ modkey }, "e", function() awful.spawn("passmenu -i") end,
               {description = "run passmenu", group = "launcher"})
 )
 
