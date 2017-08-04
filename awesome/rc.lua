@@ -610,7 +610,7 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = false}
     },
 
-    -- Make some apps to always open on the tag named "1" on screen 1.
+    -- Make some apps to always open on the tag named "web" on screen 1.
     { rule_any = { class = { "Firefox", "chromium", "Google-chrome", "Corebird",
                              "Pidgin" }
                  },
