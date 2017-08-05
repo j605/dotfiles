@@ -614,11 +614,17 @@ awful.rules.rules = {
     { rule_any = { class = { "Firefox", "chromium", "Google-chrome", "Corebird",
                              "Pidgin" }
                  },
-    properties = { screen = 1, tag = "web" }
+      properties = { screen = 1, tag = "web" }
     },
 
     { rule_any = { class = { "st-256color", "xterm" } },
       properties = { size_hints_honor = false }},
+
+    { rule = { class = "MATLAB R2017a - academic use" },
+      properties = { screen = 1, new_tag = "matlab" }},
+
+    { rule = { class = "Mendeley Desktop" },
+      properties = { screen = 1, new_tag = "research" }},
 }
 -- }}}
 
