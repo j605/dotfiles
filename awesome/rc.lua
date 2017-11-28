@@ -61,7 +61,7 @@ run_once("vattery")
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(awful.util.get_themes_dir() .. "powerarrow-darker/theme.lua")
-beautiful.wallpaper = "/usr/share/wallpapers/Next/contents/images/1920x1080.png"
+beautiful.wallpaper = "/home/jagan/Pictures/Poly-Lakeside.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "konsole"
