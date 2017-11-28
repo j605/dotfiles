@@ -112,5 +112,10 @@ if has('mksession')
 	set viewoptions=cursor,folds
 endif
 "}}}
+" neovim guicursor {{{
+if has('nvim')
+  set guicursor=
+endif
+"}}}
 
 set t_Co=256
