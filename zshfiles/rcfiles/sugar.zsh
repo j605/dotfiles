@@ -1,7 +1,7 @@
 # prevent silent overwriting
 alias mv="mv -i"
 
-alias ls="ls --color --classify"
+alias ls="ls --color=auto --classify"
 alias l="ls"
 alias la="ls -a"
 
