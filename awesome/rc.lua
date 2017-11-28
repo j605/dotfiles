@@ -458,7 +458,7 @@ globalkeys = gears.table.join(
     awful.key({ }, "XF86HomePage", function () awful.spawn("slock") end),
     -- Screenshot using maim
     awful.key({ }, "Print", function()
-        awful.spawn([[ sh -c 'maim -s "$HOME/Pictures/Screenshot from $(date +%F\ %T)".png'
+        awful.spawn([[ sh -c 'maim -s "$HOME/Pictures/screenshots/$(date +%F\ %T)".png'
         ]]) end),
     awful.key({ modkey }, "e", function() awful.spawn("passmenu -i") end,
               {description = "run passmenu", group = "launcher"})
