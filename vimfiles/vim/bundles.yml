@@ -1,15 +1,29 @@
+# vim:foldmethod=marker
 # color scheme
 - romainl/Apprentice:
 
 # comments plugin
 - scrooloose/nerdcommenter:
 
+#{{{ language plugins
 # Latex
 - lervag/vimtex:
     lazy: 1
     autoload:
-        filetypes:
-            - tex
+      filetypes:
+        - tex
+
+# dart
+- dart-lang/dart-vim-plugin:
+    lazy: 1
+    autoload:
+    filetypes:
+      - dart
+
+# julia
+- JuliaEditorSupport/julia-vim:
+
+#}}}
 
 # Notes in vim
 - xolox/vim-misc:
