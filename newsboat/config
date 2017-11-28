@@ -1,5 +1,5 @@
 auto-reload         yes
-browser             "elinks %u"
+browser             "xdg-open %u &!"
 download-full-page  yes
 notify-screen       yes
 feed-sort-order     title
@@ -7,7 +7,9 @@ download-path       "~/Podcasts/%n"
 max-downloads       3
 player              "mpv"
 max-items           100
+reload-threads      20
+macro y set browser "mpv %u" ; open-in-browser-and-mark-read ; set browser "xdg-open %u"
 
-include "~/.config/newsbeuter/color"
+include "~/.config/newsboat/color"
 
 # vim:ft=conf
