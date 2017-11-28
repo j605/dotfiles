@@ -10,7 +10,7 @@ typeset -U path cdpath manpath fpath
 #  /: directory
 
 path=(
-	$HOME/bin
+	$HOME/.local/bin
 	$HOME/dotfiles/bin
 	$path
 )
