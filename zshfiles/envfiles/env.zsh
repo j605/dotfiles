@@ -25,3 +25,4 @@ export AIRCHENNAIMORNING=http://newsonair.com/writereaddata/bulletins/Chennai-Ta
 export AIRCHENNAIEVENING=http://newsonair.com/writereaddata/bulletins/Chennai-Tamil-Regional-Bulletins-54498.mp3
 export AIRSANSMORNING=http://www.newsonair.com/writereaddata/bulletins/Sanskrit-NSD-Language-Audio-Bulletins-56978.mp3
 export AIRSANSEVENING=http://www.newsonair.com/writereaddata/bulletins/Sanskrit-NSD-Language-Audio-Bulletins-55570.mp3
+export TFBS=http://radio.canstream.co.uk:8002/live.mp3
