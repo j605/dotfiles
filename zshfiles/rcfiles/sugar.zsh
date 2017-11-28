@@ -18,7 +18,6 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 alias .......="cd ../../../../../.."
 alias sz="source $HOME/.zshenv && source $HOME/.zshrc"
-alias ssh="TERM=screen-256color ssh"
 alias pass="EDITOR=nano pass"
 
 # use radeon only when necessary
