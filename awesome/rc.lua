@@ -55,7 +55,6 @@ function run_once(prg,arg_string,pname,screen)
    end
 end
 
-run_once("vattery")
 -- }}}
 
 -- {{{ Variable definitions
