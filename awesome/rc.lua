@@ -591,7 +591,7 @@ awful.rules.rules = {
           "MessageWin",  -- kalarm.
           "Sxiv",
           "Wpa_gui",
-          "pinentry",
+          "Pinentry",
           "albert",
           "veromix",
           "xtightvncviewer"},
@@ -612,7 +612,7 @@ awful.rules.rules = {
 
     -- Make some apps to always open on the tag named "web" on screen 1.
     { rule_any = { class = { "Firefox", "chromium", "Google-chrome", "Corebird",
-                             "Pidgin" }
+                             "Pidgin", "Nightly"}
                  },
       properties = { screen = 1, tag = "web" }
     },
@@ -620,11 +620,11 @@ awful.rules.rules = {
     { rule_any = { class = { "st-256color", "xterm" } },
       properties = { size_hints_honor = false }},
 
-    { rule = { class = "MATLAB R2017a - academic use" },
-      properties = { screen = 1, new_tag = "matlab" }},
+    -- { rule = { class = "MATLAB R2017b - academic use" },
+      -- properties = { screen = 1, new_tag = "matlab" }},
 
     { rule = { class = "Mendeley Desktop" },
-      properties = { screen = 1, new_tag = "research" }},
+      properties = { screen = 1, tag = "research" }},
 }
 -- }}}
 
