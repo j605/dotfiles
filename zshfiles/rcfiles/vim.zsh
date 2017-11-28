@@ -6,7 +6,7 @@ function myvim() {
 
 	local startuptime_file="$HOME/.tmp/profiling/vim/`date "+%Y%m%d_%H%M%S"`"
 
-	vim $session_option --startuptime $startuptime_file $*
+	nvim $session_option --startuptime $startuptime_file $*
 	local code=$?
 
 	__EXECUTED_GIT_COMMAND=1
@@ -18,4 +18,4 @@ alias v="myvim"
 alias ev="v ~/dotfiles/vimfiles/vimrc"
 alias ez="v ~/dotfiles/zshfiles/zshrc"
 alias et="v ~/dotfiles/miscfiles/tmux.conf"
-alias vless="$(pacman -Qql vim-runtime | grep less.sh)"
+alias vless=$(find /usr/share/vim -name less.sh)
