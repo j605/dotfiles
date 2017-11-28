@@ -3,10 +3,12 @@ export DOTDIR=$HOME/dotfiles
 export WIDGETDIR=$DOTDIR/zshfiles/rcfiles/widgets
 
 # Preferences
-export EDITOR=vim
-export GIT_EDITOR=vim
+export EDITOR=myvim
+export GIT_EDITOR=myvim
 export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
 export MOZ_USE_XINPUT2="1"
+export CRAFTY_LOG_DIR="$HOME/chess/crafty/"
+export AURDEST="$HOME/srces"
 
 # GOLANG
 export GOPATH=$HOME/go
