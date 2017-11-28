@@ -6,6 +6,7 @@ export WIDGETDIR=$DOTDIR/zshfiles/rcfiles/widgets
 export EDITOR=vim
 export GIT_EDITOR=vim
 export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
+export MOZ_USE_XINPUT2="1"
 
 # GOLANG
 export GOPATH=$HOME/go
