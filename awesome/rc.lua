@@ -435,6 +435,12 @@ globalkeys = gears.table.join(
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
+    awful.key({ modkey }, ".",
+              function()
+                  menubar.refresh()
+                  naughty.notify({ text = "Menu items refreshed", timeout = 1 })
+              end,
+              {description = "refresh the menubar", group = "launcher"}),
     -- Media
     awful.key({ }, "XF86AudioRaiseVolume", function ()
               awful.spawn("amixer set Master 2%+", false) end),
