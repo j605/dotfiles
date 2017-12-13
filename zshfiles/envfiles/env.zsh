@@ -3,8 +3,8 @@ export DOTDIR=$HOME/dotfiles
 export WIDGETDIR=$DOTDIR/zshfiles/rcfiles/widgets
 
 # Preferences
-export EDITOR=myvim
-export GIT_EDITOR=myvim
+export EDITOR=nvim
+export GIT_EDITOR=nvim
 export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
 export MOZ_USE_XINPUT2="1"
 export CRAFTY_LOG_DIR="$HOME/chess/crafty/"
