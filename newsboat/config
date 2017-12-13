@@ -3,6 +3,7 @@ browser             "xdg-open %u &!"
 download-full-page  yes
 notify-screen       yes
 feed-sort-order     title
+prepopulate-query-feeds yes
 download-path       "~/Podcasts/%n"
 max-downloads       3
 player              "mpv"
