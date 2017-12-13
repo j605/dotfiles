@@ -616,7 +616,7 @@ awful.rules.rules = {
     },
 
     -- Make some apps to always open on the tag named "web" on screen 1.
-    { rule_any = { class = { "Firefox", "chromium", "Google-chrome", "Corebird",
+    { rule_any = { class = { "Firefox", "Chromium", "Google-chrome", "Corebird",
                              "Pidgin", "Nightly"}
                  },
       properties = { screen = 1, tag = "web" }
