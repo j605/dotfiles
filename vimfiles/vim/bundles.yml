@@ -23,6 +23,9 @@
 # julia
 - JuliaEditorSupport/julia-vim:
 
+# fish
+- dag/vim-fish:
+
 #}}}
 
 # Notes in vim
