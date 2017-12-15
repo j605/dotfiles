@@ -22,3 +22,5 @@ miscfiles/vimperator/info
 clicoder.d/config.yml
 
 node_modules
+
+fish/fish_history
