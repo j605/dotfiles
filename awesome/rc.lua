@@ -63,7 +63,7 @@ beautiful.init(awful.util.get_themes_dir() .. "powerarrow-darker/theme.lua")
 beautiful.wallpaper = "/home/jagan/Pictures/Poly-Lakeside.jpg"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
+terminal = "kitty -1"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
 
