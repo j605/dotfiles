@@ -1,2 +1,7 @@
 # ~/.profile
 # vim:ft=sh
+# some defaults
+export EDITOR=nvim
+export VISUAL=nvim
+export SSH_ASKPASS="/usr/bin/ksshaskpass"
+export PATH="$HOME/.local/bin:$HOME/dotfiles/bin:$PATH"
