@@ -5,3 +5,19 @@ export EDITOR=nvim
 export VISUAL=nvim
 export SSH_ASKPASS="/usr/bin/ksshaskpass"
 export PATH="$HOME/.local/bin:$HOME/dotfiles/bin:$PATH"
+
+function sway_launch()
+{
+  export GDK_BACKEND=wayland
+  export CLUTTER_BACKEND=wayland
+
+  export QT_QPA_PLATFORM=wayland-egl
+
+  export ECORE_EVAS_ENGINE=wayland_egl
+  export ELM_ENGINE=wayland_egl
+
+  export SDL_VIDEODRIVER=wayland
+
+  export _JAVA_AWT_WM_NONREPARENTING=1
+  sway "$@"
+}
