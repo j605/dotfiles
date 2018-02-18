@@ -12,7 +12,7 @@
   email = jagannathante@gmail.com
 
 [core]
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore_global
 
 [push]
@@ -22,11 +22,7 @@
   autosetuprebase = always
 
 [merge]
-  tool = splice
-
-[mergetool "splice"]
-  cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
-  trustExitCode = true
+  tool = meld
 
 [github]
   user = j605
