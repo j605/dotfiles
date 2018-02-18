@@ -91,7 +91,7 @@ endif
 "}}}
 " executing external commands {{{
 " using zsh for external command is too slow (because zsh my startup is slow for now...)
-set shell=/bin/bash
+set shell=/bin/mksh
 set keywordprg=:help
 " Use par to reflow text
 " see: http://vimcasts.org/episodes/formatting-text-with-par/
