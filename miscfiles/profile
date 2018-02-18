@@ -1,4 +1,2 @@
 # ~/.profile
 # vim:ft=sh
-# set QT5 theme if not in a DE
-[ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
