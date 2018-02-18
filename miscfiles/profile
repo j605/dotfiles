@@ -21,3 +21,8 @@ function sway_launch()
   export _JAVA_AWT_WM_NONREPARENTING=1
   sway "$@"
 }
+
+# just start plasma directly after login
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+  startplasmacompositor
+fi
