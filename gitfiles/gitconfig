@@ -24,6 +24,9 @@
 [merge]
   tool = meld
 
+[format]
+  pretty = format:%C(auto)%h %C(bold blue)%an %Creset%s %Cgreen (%cr) %C(auto,red)%d %Creset
+
 [github]
   user = j605
 
