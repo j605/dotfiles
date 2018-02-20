@@ -29,6 +29,7 @@ bup index -u --exclude /home/jagan/books \
   --exclude /home/jagan/.eclipse \
   --exclude /home/jagan/.cargo \
   --exclude /home/jagan/.npm \
+  --exclude /home/jagan/.yarn \
   --exclude /home/jagan/.rustup \
   --exclude /home/jagan/esat \
   --exclude "/home/lost+found" \
