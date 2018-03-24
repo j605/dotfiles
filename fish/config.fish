@@ -4,11 +4,6 @@ set fish_greeting
 #}}}
 
 #{{{ Non autoload funtions
-# wrap pass to use nano as editor
-function pass --wraps=pass
-  env EDITOR=nano pass $argv
-end
-
 function rmpv --wraps=mpv --description="mpv with radeon hwdec (X)"
   env MESA_GL_VERSION_OVERRIDE=4.1 MESA_GLSL_VERSION_OVERRIDE=410 DRI_PRIME=1 \
     VDPAU_DRIVER=r600 LIBVA_DRIVER_NAME=vdpau \
@@ -38,3 +33,5 @@ function mpv-shuffle --description="shuffle and play all songs in a given folder
 end
 
 #}}}
+
+source /usr/share/autojump/autojump.fish
