@@ -18,7 +18,7 @@ api_url = "https://getpocket.com/v3/add"
 with open(config_file) as f:
     lines = [ s.strip() for s in f.readlines() ]
     for l in lines:
-        l = l.split(' ')
+        l = l.split()
         if l[0] == "consumer-key":
             consumer_key = l[1]
         elif l[0] == "access-token":
