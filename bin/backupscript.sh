@@ -17,6 +17,7 @@ bup index -u --exclude /home/jagan/books \
   --exclude /home/jagan/.thumbnails \
   --exclude /home/jagan/alt-speed-enabled \
   --exclude /home/jagan/srces \
+  --exclude /home/jagan/snap \
   --exclude /home/jagan/.gnupg \
   --exclude /home/jagan/Music \
   --exclude /home/jagan/.config/chromium \
@@ -25,11 +26,13 @@ bup index -u --exclude /home/jagan/books \
   --exclude /home/jagan/.dropbox-dist \
   --exclude /home/jagan/Podcasts \
   --exclude /home/jagan/.ccache \
+  --exclude /home/jagan/.cache/sccache \
   --exclude /home/jagan/dotfiles \
   --exclude /home/jagan/.eclipse \
   --exclude /home/jagan/.cargo \
   --exclude /home/jagan/.npm \
   --exclude /home/jagan/.yarn \
+  --exclude /home/jagan/.node-gyp \
   --exclude /home/jagan/.rustup \
   --exclude /home/jagan/esat \
   --exclude "/home/lost+found" \
