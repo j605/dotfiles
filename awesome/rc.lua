@@ -63,7 +63,7 @@ beautiful.init(awful.util.get_themes_dir() .. "powerarrow-darker/theme.lua")
 beautiful.wallpaper = "/home/jagan/Pictures/Poly-Lakeside.jpg"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty -1"
+terminal = "konsole"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -432,7 +432,7 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
+    awful.key({ modkey }, "p", function() awful.spawn("rofi -show combi") end,
               {description = "show the menubar", group = "launcher"}),
     awful.key({ modkey }, ".",
               function()
