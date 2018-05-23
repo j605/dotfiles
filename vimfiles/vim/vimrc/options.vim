@@ -6,6 +6,7 @@ set incsearch
 set magic
 set ignorecase
 set smartcase
+runtime macros/matchit.vim
 "}}}
 " tags {{{
 "}}}
@@ -60,6 +61,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
+set breakindent
 filetype plugin indent on
 "}}}
 " folding {{{
@@ -82,7 +84,6 @@ set updatetime=1000
 "}}}
 " command line editing {{{
 set history=200
-set wildmode=list:longest
 set wildignore+=*~,*.obj
 if has('persistent_undo')
 	set undodir=~/.tmp/vim/undo
@@ -112,9 +113,9 @@ if has('mksession')
 	set viewoptions=cursor,folds
 endif
 "}}}
-" neovim guicursor {{{
 if has('nvim')
   set guicursor=
+  set inccommand=split
 endif
 "}}}
 
