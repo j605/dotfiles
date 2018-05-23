@@ -6,30 +6,32 @@ and save them in ~/.config/newsboat/pocket
 
 usage: ./boatsave url title description feedtitle
 note: only first url and title are used
+
 """
 
-import requests
 import sys
 from pathlib import Path
+import requests
 
-config_file = Path.home() / Path(".config/newsboat/pocket")
-api_url = "https://getpocket.com/v3/add"
+CONFIG_FILE = Path.home() / Path(".config/newsboat/pocket")
+API_URL = "https://getpocket.com/v3/add"
 
-with open(config_file) as f:
-    lines = [ s.strip() for s in f.readlines() ]
-    for l in lines:
-        l = l.split()
-        if l[0] == "consumer-key":
-            consumer_key = l[1]
-        elif l[0] == "access-token":
-            access_token = l[1]
-        elif l == "":
+with open(CONFIG_FILE) as f:
+    DATA_LINES = [s.strip() for s in f.readlines()]
+    for data in DATA_LINES:
+        data = data.split()
+        if data[0] == "consumer-key":
+            consumer_key = data[1]
+        elif data[0] == "access-token":
+            access_token = data[1]
+        elif data == "":
             continue
         else:
             print("consumer-key or access-token not found", file=sys.stderr)
 
-url = sys.argv[1]
-title = sys.argv[2]
+URL = sys.argv[1]
+TITLE = sys.argv[2]
 
-response = requests.post(api_url, data={"url": url, "title": title,
-    "consumer_key": consumer_key, "access_token": access_token})
+requests.post(API_URL, data={"url": URL, "title": TITLE,
+                             "consumer_key": consumer_key,
+                             "access_token": access_token})
