@@ -32,6 +32,12 @@ with open(CONFIG_FILE) as f:
 URL = sys.argv[1]
 TITLE = sys.argv[2]
 
-requests.post(API_URL, data={"url": URL, "title": TITLE,
-                             "consumer_key": consumer_key,
-                             "access_token": access_token})
+requests.post(
+    API_URL,
+    data={
+        "url": URL,
+        "title": TITLE,
+        "consumer_key": consumer_key,
+        "access_token": access_token,
+    },
+)
