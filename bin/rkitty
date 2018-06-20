@@ -1,0 +1,2 @@
+#! /bin/sh
+/usr/bin/kitty -1 --session $HOME/.config/kitty/remote.session
