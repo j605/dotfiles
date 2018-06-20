@@ -1,4 +1,4 @@
 # wrap pass to use nano as editor
-function pass --wraps=pass
-  env EDITOR=nano pass $argv
+function pass --wraps=gopass
+  gopass $argv
 end
