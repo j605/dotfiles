@@ -6,7 +6,7 @@ set fish_greeting
 #{{{ Non autoload funtions
 function rmpv --wraps=mpv --description="mpv with radeon hwdec (X)"
   env MESA_GL_VERSION_OVERRIDE=4.4 MESA_GLSL_VERSION_OVERRIDE=440 DRI_PRIME=1 \
-    VDPAU_DRIVER=r600 \
+    LIBVA_DRIVER_NAME=r600 \
     mpv --profile=radeon_x11 $argv
 end
 
