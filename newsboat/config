@@ -8,7 +8,7 @@ text-width          80
 download-path       "~/Podcasts/%n"
 max-downloads       3
 player              "mpv"
-max-items           100
+max-items           300
 reload-threads      20
 notify-beep         yes
 macro y set browser "mpv %u 2>&1>/dev/null &!" ; open-in-browser-and-mark-read ; set browser "xdg-open %u 2>&1>/dev/null &!"
