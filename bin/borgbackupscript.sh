@@ -36,6 +36,7 @@ borg create $BORG_OPTS \
   --exclude /home/jagan/.node-gyp \
   --exclude /home/jagan/.rustup \
   --exclude /home/jagan/.ACEStream \
+  --exclude /home/jagan/.local/share/baloo \
   --exclude /home/jagan/esat \
   --exclude "/home/lost+found" \
   --exclude /dev \
