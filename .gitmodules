@@ -66,3 +66,6 @@
 [submodule "submodules/LS_COLORS"]
 	path = submodules/LS_COLORS
 	url = git@github.com:trapd00r/LS_COLORS.git
+[submodule "submodules/git-hooks"]
+	path = submodules/git-hooks
+	url = git@github.com:icefox/git-hooks.git
