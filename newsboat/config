@@ -4,13 +4,16 @@ download-full-page  yes
 notify-screen       yes
 feed-sort-order     title
 prepopulate-query-feeds yes
+text-width          80
 download-path       "~/Podcasts/%n"
 max-downloads       3
 player              "mpv"
 max-items           100
 reload-threads      20
 notify-beep         yes
-macro y set browser "mpv %u" ; open-in-browser-and-mark-read ; set browser "xdg-open %u"
+macro y set browser "mpv %u 2>&1>/dev/null &!" ; open-in-browser-and-mark-read ; set browser "xdg-open %u 2>&1>/dev/null &!"
+bookmark-cmd        "boatsave"
+bookmark-autopilot  yes
 
 include "~/.config/newsboat/color"
 
