@@ -74,6 +74,7 @@ set foldmethod=marker
 " reading and writing files {{{
 set backup
 set backupdir=~/.tmp/vim/backup
+set backupskip+="/var/tmp/*"
 set autoread
 " Vim builtin encryption (http://usevim.com/2013/11/01/vim-encryption/)
 " set cryptmethod=blowfish
