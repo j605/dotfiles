@@ -7,8 +7,14 @@ set magic
 set ignorecase
 set smartcase
 runtime macros/matchit.vim
+
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 "}}}
 " tags {{{
+set showfulltag
 "}}}
 " displaying text {{{
 set scrolloff=3
@@ -113,11 +119,10 @@ if has('mksession')
 	set viewdir=~/.tmp/vim/view
 	set viewoptions=cursor,folds
 endif
-"}}}
+
 if has('nvim')
-  set guicursor=
   set inccommand=split
 endif
-"}}}
 
 set t_Co=256
+"}}}
