@@ -13,13 +13,6 @@
       filetypes:
         - tex
 
-# dart
-- dart-lang/dart-vim-plugin:
-    lazy: 1
-    autoload:
-    filetypes:
-      - dart
-
 # julia
 - JuliaEditorSupport/julia-vim:
 
