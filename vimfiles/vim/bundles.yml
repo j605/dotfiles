@@ -1,10 +1,10 @@
 # vim:foldmethod=marker
+#{{{ General
 # color scheme
 - romainl/Apprentice:
-
-# comments plugin
 - scrooloose/nerdcommenter:
-
+- tpope/vim-repeat:
+#}}}
 #{{{ language plugins
 # Latex
 - lervag/vimtex:
@@ -18,11 +18,30 @@
 
 # fish
 - dag/vim-fish:
-
 #}}}
-
-# Notes in vim
+#{{{ Writing
 - xolox/vim-misc:
 - xolox/vim-notes:
     depends:
       - vim-misc
+- gu-fan/riv.vim:
+    lazy: 1
+    autoload:
+      filetypes:
+        - rst
+- fmoralesc/nlanguagetool.nvim:
+#}}}
+#{{{ Git
+# git diff on the side
+- airblade/vim-gitgutter:
+- tpope/vim-fugitive:
+#}}}
+#{{{ Others
+# Indent hints
+- Yggdroot/indentLine:
+
+# Asynchronous make
+- neomake/neomake:
+
+- tpope/vim-surround:
+#}}}
