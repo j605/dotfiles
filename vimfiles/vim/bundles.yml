@@ -18,6 +18,8 @@
 
 # fish
 - dag/vim-fish:
+
+- peterhoeg/vim-qml:
 #}}}
 #{{{ Writing
 - xolox/vim-misc:
