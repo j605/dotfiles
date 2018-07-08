@@ -15,6 +15,7 @@
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
+  commitGraph = true
 
 [pager]
   log = /usr/share/git/diff-highlight/diff-highlight | less
@@ -58,3 +59,7 @@
   insteadOf = aur:
 [cola]
 	spellcheck = false
+[difftool "nbdime"]
+	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
+[difftool]
+	prompt = false
