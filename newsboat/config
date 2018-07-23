@@ -4,7 +4,6 @@ download-full-page  yes
 notify-screen       yes
 feed-sort-order     title
 prepopulate-query-feeds yes
-text-width          80
 download-path       "~/Podcasts/%n"
 max-downloads       3
 player              "mpv"
