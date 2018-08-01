@@ -6,7 +6,7 @@ export VISUAL=nvim
 export SSH_ASKPASS="/usr/bin/ksshaskpass"
 export PATH="$HOME/.local/bin:$HOME/dotfiles/bin:$PATH"
 
-function sway_launch()
+sway_launch()
 {
   export GDK_BACKEND=wayland
   export CLUTTER_BACKEND=wayland
@@ -23,6 +23,6 @@ function sway_launch()
 }
 
 # just start plasma directly after login
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
   startx ~/.xinitrc kde 2>&1 | busybox svlogd ~/.log
 fi
