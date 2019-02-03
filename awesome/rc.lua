@@ -38,25 +38,6 @@ do
 end
 -- }}}
 
--- {{{ Autostart applications
-function run_once(prg,arg_string,pname,screen)
-   if not prg then
-      do return nil end
-   end
-
-   if not pname then
-      pname = prg
-   end
-
-   if not arg_string then 
-      awful.spawn.with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. ")",screen)
-   else
-      awful.spawn.with_shell("pgrep -f -u $USER -x '" .. pname .. " ".. arg_string .."' || (" .. prg .. " " .. arg_string .. ")",screen)
-   end
-end
-
--- }}}
-
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(awful.util.get_themes_dir() .. "powerarrow-darker/theme.lua")
