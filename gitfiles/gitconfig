@@ -66,3 +66,8 @@
 [difftool]
   prompt = false
 
+[sendemail]
+  smtpEncryption = tls
+  smtpServer = smtp.gmail.com
+  smtpUser = jagannathante@gmail.com
+  smtpServerPort = 587
