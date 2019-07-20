@@ -3,7 +3,7 @@ inoremap <silent> <buffer> <Leader><C-h> <Space><<<Space>
 
 set tabstop=4
 set shiftwidth=4
-set expandtab
+set noexpandtab " newsboat uses tabs
 
 " ==================================================
 " Make"prg"file
