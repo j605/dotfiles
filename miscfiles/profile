@@ -5,6 +5,8 @@ export EDITOR=nvim
 export VISUAL=nvim
 export SSH_ASKPASS="/usr/bin/ksshaskpass"
 export PATH="$HOME/.local/bin:$HOME/dotfiles/bin:$PATH"
+export GTK_USE_PORTAL=1
+
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=fcitx
