@@ -4,6 +4,7 @@
 - romainl/Apprentice:
 - scrooloose/nerdcommenter:
 - tpope/vim-repeat:
+- editorconfig/editorconfig-vim:
 #}}}
 #{{{ language plugins
 # Latex
@@ -46,4 +47,7 @@
 - neomake/neomake:
 
 - tpope/vim-surround:
+
+# ctags
+- ludovicchabant/vim-gutentags:
 #}}}
