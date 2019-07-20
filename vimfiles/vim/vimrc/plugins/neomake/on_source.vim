@@ -1,2 +1,2 @@
-" When writing a buffer (no delay), and on normal mode changes (after 750ms).
-call neomake#configure#automake('nw', 750)
+" Only lint writing a buffer to disk.
+call neomake#configure#automake('w', 750)
