@@ -29,6 +29,7 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 let g:tex_comment_nospell = 1
 let g:tex_conceal = "abdg"
 let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_method = 'zathura'
 let g:vimtex_fold_enabled = 1
 let g:vimtex_compiler_latexmk = {
         \ 'backend' : 'nvim',
@@ -46,3 +47,7 @@ let g:vimtex_compiler_latexmk = {
         \   '-interaction=nonstopmode',
         \ ],
         \}
+
+if has('nvim')
+	let g:vimtex_compiler_progname = 'nvr'
+end
