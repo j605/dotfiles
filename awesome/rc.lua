@@ -125,7 +125,6 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
--- Keyboard map indicator and switcher
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
