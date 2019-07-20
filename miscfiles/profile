@@ -27,7 +27,17 @@ sway_launch()
   sway "$@"
 }
 
-# just start plasma directly after login
-if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
+plasma_launch()
+{
   startx ~/.xinitrc kde 2>&1 | busybox svlogd ~/.log
-fi
+}
+
+awe_launch()
+{
+  startx ~/.xinitrc 2>&1 | busybox svlogd ~/.log
+}
+
+qtile_launch()
+{
+  startx ~/.xinitrc qtile 2>&1 | busybox svlogd ~/.log
+}
