@@ -1,5 +1,7 @@
 # Dear me
 
+**Instructions don't apply after forking and I use only Linux**
+
 This is an instruction to set up your brand new Mac.
 Have fun :)
 
