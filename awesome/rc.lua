@@ -427,9 +427,9 @@ globalkeys = gears.table.join(
               {description = "refresh the menubar", group = "launcher"}),
     -- Media
     awful.key({ }, "XF86AudioRaiseVolume", function ()
-              awful.spawn("amixer set Master 2%+", false) end),
+              awful.spawn("amixer set Master 5%+", false) end),
     awful.key({ }, "XF86AudioLowerVolume", function ()
-              awful.spawn("amixer set Master 2%-", false) end),
+              awful.spawn("amixer set Master 5%-", false) end),
     awful.key({ }, "XF86AudioMute", function()
               awful.spawn("amixer set Master toggle", false) end),
     awful.key({ }, "XF86AudioPlay", function ()
