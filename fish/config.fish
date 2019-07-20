@@ -38,6 +38,14 @@ function mpv-shuffle --description="shuffle and play all songs in a given folder
   -regextype posix-extended -regex ".*/*\.(mp3|wav|flac|m4a)\$" | psub) | psub)
 end
 
+function dmpv --wraps=mpv --description="mpv on drm"
+	mpv --gpu-context=drm --drm-connector=0.auto $argv
+end
+
+function wmpv --wraps=mpv --description="mpv with hwdec (wayland)"
+  mpv --profile=intel_wayland $argv
+end
+
 function mpi --wraps=mpv --description="mpv image viewer"
   mpv --profile=image $argv
 end
