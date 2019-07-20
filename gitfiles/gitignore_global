@@ -39,6 +39,8 @@ Icon
 TAGS
 !TAGS/
 tags
+tags.temp
+tags.lock
 !tags/
 gtags.files
 GTAGS
