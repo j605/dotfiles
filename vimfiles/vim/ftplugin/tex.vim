@@ -39,10 +39,9 @@ let g:vimtex_compiler_latexmk = {
         \ 'continuous' : 1,
         \ 'executable' : 'latexmk',
         \ 'options' : [
-        \   '-pdf',
-        \   '-xelatex',
         \   '-verbose',
         \   '-file-line-error',
+        \   '-shell-escape',
         \   '-synctex=1',
         \   '-interaction=nonstopmode',
         \ ],
