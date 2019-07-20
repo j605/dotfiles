@@ -194,20 +194,20 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
     awful.tag.add("web", {
-      icon               = "/usr/share/icons/Moka/32x32/apps/firefox.png",
+      icon               = "/usr/lib/firefox/browser/chrome/icons/default/default16.png",
       layout             = awful.layout.suit.floating,
       screen             = s,
       selected           = true,
     })
 
     awful.tag.add("remote", {
-      icon               = "/usr/share/icons/Moka/32x32/apps/terminator.png",
+      icon               = "/usr/share/icons/Suru/32x32/apps/gksu-root-terminal.png",
       layout             = awful.layout.suit.fair.horizontal,
       screen             = s,
     })
 
     awful.tag.add("local", {
-      icon               = "/usr/share/icons/Moka/32x32/apps/utilities-terminal.png",
+      icon               = "/usr/share/icons/Suru/32x32/apps/terminal-app.png",
       layout             = awful.layout.suit.fair.horizontal,
       screen             = s,
     })
