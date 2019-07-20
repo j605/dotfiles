@@ -46,7 +46,7 @@ awful.spawn.once("fcitx -d -r")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.get_themes_dir() .. "powerarrow-darker/theme.lua")
+beautiful.init(awful.util.get_themes_dir() .. "grey/theme.lua")
 beautiful.wallpaper = "/home/jagan/Pictures/Poly-Lakeside.jpg"
 
 -- This is used later as the default terminal and editor to run.
