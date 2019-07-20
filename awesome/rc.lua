@@ -38,6 +38,12 @@ do
 end
 -- }}}
 
+-- {{{ Startup
+awful.spawn.once("klipper")
+awful.spawn.once("kmix")
+awful.spawn.once("fcitx -d -r")
+--- }}}
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(awful.util.get_themes_dir() .. "powerarrow-darker/theme.lua")
