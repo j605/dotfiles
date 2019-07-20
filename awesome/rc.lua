@@ -50,7 +50,7 @@ beautiful.init(awful.util.get_themes_dir() .. "grey/theme.lua")
 beautiful.wallpaper = "/home/jagan/Pictures/Poly-Lakeside.jpg"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "konsole"
+terminal = "kitty -1"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -510,7 +510,7 @@ for i = 1, 9 do
                   end,
                   {description = "view tag #"..i, group = "tag"}),
         -- Toggle tag display.
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
+        awful.key({ modkey, "Mod1" }, "#" .. i + 9,
                   function ()
                       local screen = awful.screen.focused()
                       local tag = screen.tags[i]
