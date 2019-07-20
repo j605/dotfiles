@@ -10,13 +10,10 @@ podlist-format      "%3i %-10S %F"
 podcast-auto-enqueue no
 max-downloads       10
 player              "mpv"
-max-items           300
-reload-threads      20
+reload-threads      100
 notify-beep         yes
-macro y set browser "mpv %u 2>&1>/dev/null &!" ; open-in-browser-and-mark-read ; set browser "xdg-open %u 2>&1>/dev/null &!"
 bookmark-cmd        "boatsave"
 bookmark-autopilot  yes
 
 include "~/.config/newsboat/color"
-
 # vim:ft=conf
