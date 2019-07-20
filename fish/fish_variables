@@ -1,0 +1,56 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export AIRCHENNAIEVENING:http\x3a//newsonair\x2ecom/writereaddata/text_regi_bulletins/Chennai\x2dTamil\x2dRegional\x2dScript\x2d55820\x2epdf
+SETUVAR --export AIRCHENNAIMORNING:http\x3a//newsonair\x2ecom/writereaddata/text_regi_bulletins/Chennai\x2dTamil\x2dRegional\x2dScript\x2d34797\x2epdf
+SETUVAR --export AURDEST:/home/jagan/srces
+SETUVAR --export EDITOR:nvim
+SETUVAR --export GPG_AGENT_INFO:/run/user/1000/gnupg/S\x2egpg\x2dagent\x3a1261\x3a1
+SETUVAR --export JULIA_EDITOR:nvim
+SETUVAR --export JULIA_LOAD_PATH:\x2e\x3a
+SETUVAR --export MATES_DIR:/home/jagan/\x2econtacts/personal
+SETUVAR --export NVIM_LISTEN_ADDRESS:/dev/shm/nvimsocket
+SETUVAR --export SSH_AGENT_PID:14318
+SETUVAR --export SSH_AUTH_SOCK:/tmp/ssh\x2dTFYcdDqjJ6D8/agent\x2e14317
+SETUVAR --export SUDO_EDITOR:nvim
+SETUVAR __fish_classic_git_prompt_initialized:\x1d
+SETUVAR __fish_init_1_50_0:\x1d
+SETUVAR __fish_init_2_39_8:\x1d
+SETUVAR __fish_init_2_3_0:\x1d
+SETUVAR __fish_init_3_x:\x1d
+SETUVAR _fish_abbr_cn:vmtouch\x20\x2dt\x20\x7e/\x2elocal/share/newsboat/cache\x2edb\x20\x26\x26\x20newsboat
+SETUVAR _fish_abbr_e:emacs\x20\x2dnw
+SETUVAR _fish_abbr_mpa:mpv\x20\x2d\x2dprofile\x3ddontshowimage
+SETUVAR _fish_abbr_mutt:neomutt
+SETUVAR _fish_abbr_radeon:env\x20MESA_GL_VERSION_OVERRIDE\x3d4\x2e4\x20MESA_GLSL_VERSION_OVERRIDE\x3d440\x20DRI_PRIME\x3d1\x20LIBVA_DRIVER\x3dr600
+SETUVAR _fish_abbr_tamil:env\x20LANGUAGE\x3dta_IN\x20LANG\x3dta_IN\x2eUTF\x2d8
+SETUVAR _fish_abbr_v:nvim
+SETUVAR fish_color_autosuggestion:969896
+SETUVAR fish_color_cancel:\x2dr
+SETUVAR fish_color_command:b294bb
+SETUVAR fish_color_comment:f0c674
+SETUVAR fish_color_cwd:green
+SETUVAR fish_color_cwd_root:red
+SETUVAR fish_color_end:b294bb
+SETUVAR fish_color_error:cc6666
+SETUVAR fish_color_escape:00a6b2
+SETUVAR fish_color_history_current:\x2d\x2dbold
+SETUVAR fish_color_host:normal
+SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
+SETUVAR fish_color_normal:normal
+SETUVAR fish_color_operator:00a6b2
+SETUVAR fish_color_param:81a2be
+SETUVAR fish_color_quote:b5bd68
+SETUVAR fish_color_redirection:8abeb7
+SETUVAR fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_status:red
+SETUVAR fish_color_user:brgreen
+SETUVAR fish_color_valid_path:\x2d\x2dunderline
+SETUVAR fish_greeting:\x1d
+SETUVAR fish_key_bindings:fish_default_key_bindings
+SETUVAR fish_pager_color_completion:normal
+SETUVAR fish_pager_color_description:B3A06D\x1eyellow
+SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
+SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_user_abbreviations:mpa\x20mpv\x20\x2d\x2dprofile\x3ddontshowimage\x1ev\x20nvim\x1emutt\x20neomutt\x1etamil\x20env\x20LANGUAGE\x3dta_IN\x20LANG\x3dta_IN\x2eUTF\x2d8\x1ee\x20emacs\x20\x2dnw
+SETUVAR fish_user_paths:/home/jagan/dotfiles/bin\x1e/home/jagan/\x2elocal/bin
