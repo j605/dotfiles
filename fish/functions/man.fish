@@ -1,5 +1,5 @@
 # https://lobste.rs/s/eng7cz/adding_colors_man#c_1y27rr
-function man -d "Pretty manpages"
+function man -d "Pretty manpages" -w man
   env \
   LESS_TERMCAP_mb=(printf "\e[1;31m") \
   LESS_TERMCAP_md=(printf "\e[1;31m") \
