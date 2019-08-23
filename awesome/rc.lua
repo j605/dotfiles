@@ -552,6 +552,16 @@ root.keys(globalkeys)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
+-- fix focus for matlab tooltips
+-- https://nl.mathworks.com/matlabcentral/answers/270122-message-warning-popup-tooltips-disappears-quickly#comment_354953
+_old_filter = awful.client.focus.filter
+awful.client.focus.filter = function(c)
+    if c.type == 'dialog' and string.match(c.class, 'MATLAB') then
+      return nil
+    end
+    return _old_filter(c)
+end
+
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
