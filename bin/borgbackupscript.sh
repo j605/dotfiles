@@ -46,10 +46,13 @@ borg create $BORG_OPTS \
   --exclude /run \
   --exclude /media \
   --exclude /mnt \
-  --exclude /var \
+  --exclude /var/cache \
+  --exclude /var/lib/aurbuild \
   --exclude "lost+found" \
   $BACKUP_DIR::$DATE \
   /
+
+tput bel
 
 borg create $BORG_OPTS /run/media/jagan/j605_hdd/BorgSync::$DATE \
     /home/jagan/books \
