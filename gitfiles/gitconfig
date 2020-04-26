@@ -59,12 +59,21 @@
   insteadOf = aur:
 [cola]
 	spellcheck = false
+
+[diff]
+  tool = kitty
+  guitool = kitty.gui
+[difftool "kitty"]
+  cmd = kitty +kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+  cmd = kitty kitty +kitten diff $LOCAL $REMOTE
 [difftool "nbdime"]
-	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
+  cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
 [difftool "latexdiff"]
-	cmd = latexdiff \"$LOCAL\" \"$REMOTE\"
+  cmd = latexdiff \"$LOCAL\" \"$REMOTE\"
 [difftool]
   prompt = false
+  trustExitCode = true
 
 [sendemail]
   smtpEncryption = tls
