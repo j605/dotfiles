@@ -11,7 +11,7 @@ export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=fcitx
 
-sway_launch()
+wayland_setup()
 {
   export GDK_BACKEND=wayland
   export CLUTTER_BACKEND=wayland
@@ -24,7 +24,18 @@ sway_launch()
   export SDL_VIDEODRIVER=wayland
 
   export _JAVA_AWT_WM_NONREPARENTING=1
+}
+
+sway_launch()
+{
+  wayland_setup
   sway "$@"
+}
+
+weston_launch()
+{
+  wayland_setup
+  weston "$@"
 }
 
 plasma_launch()
