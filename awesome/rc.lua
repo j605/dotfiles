@@ -34,6 +34,7 @@ end)
 awful.spawn.once("klipper")
 awful.spawn.once("kmix")
 awful.spawn.once("fcitx -d -r")
+awful.spawn.once("kdeconnect-indicator")
 --- }}}
 
 -- {{{ Variable definitions
