@@ -2,8 +2,7 @@
 # vim: filetype=perl
 
 $pdf_mode = "1";
-$pdflatex = "xelatex";
 $latexoption = '-shell-escape';
 $pdf_previewer = 'zathura';
-$outdir = './build';
-$auxdir = './build';
+$outdir = 'build';
+$auxdir = 'build';
