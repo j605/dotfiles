@@ -7,6 +7,7 @@ prepopulate-query-feeds yes
 download-path       "~/Podcasts/%N"
 download-filename-format "%F-%t.%e"
 podlist-format      "%3i %-10S %F"
+selecttag-format    "%4i  %T (%u)/(%n)"
 podcast-auto-enqueue no
 max-downloads       10
 player              "mpv"
